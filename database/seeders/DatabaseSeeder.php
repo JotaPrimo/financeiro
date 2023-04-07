@@ -21,10 +21,11 @@ class DatabaseSeeder extends Seeder
             MesSeeder::class,
             CategoriaProventoSeeder::class,
             CategoriaDebitoSeeder::class,
-            TipoDebitoSeeder::class
+            TipoDebitoSeeder::class,
+            Provento::factory()->count(300)->make(),
+            Debito::factory()->count(300)->make(),
         ]);
 
-        Provento::factory()->count(300)->make();
-        Debito::factory()->count(300)->make();
+
     }
 }

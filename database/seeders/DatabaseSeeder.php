@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\CategoriaProvento;
 use App\Models\Debito;
 use App\Models\Provento;
+use Database\Factories\ProventoFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,9 +23,11 @@ class DatabaseSeeder extends Seeder
             CategoriaProventoSeeder::class,
             CategoriaDebitoSeeder::class,
             TipoDebitoSeeder::class,
-            Provento::factory()->count(300)->make(),
-            Debito::factory()->count(300)->make(),
+            UserSeeer::class
         ]);
+
+        Provento::factory()->count(300)->create();
+        Debito::factory()->count(300)->create();
 
 
     }

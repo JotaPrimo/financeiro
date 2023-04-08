@@ -9,6 +9,19 @@ class Mes extends Model
 {
     use HasFactory;
 
+    const JANEIRO = 1;
+    const FEVEREIRO = 2;
+    const MARCO = 3;
+    const ABRIL = 4;
+    const MAIO = 5;
+    const JUNHO = 6;
+    const JULHO = 7;
+    const AGOSTO = 8;
+    const SETEMBRO = 9;
+    const OUTUBRO = 10;
+    const NOVEMBRO = 11;
+    const DEZEMBRO = 12;
+
     protected $fillable = [
         'nome',
     ];

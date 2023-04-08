@@ -9,5 +9,7 @@ class Ano extends Model
 {
     use HasFactory;
 
+    const ANO_2023 = 1;
+
     protected $fillable = ['nome'];
 }

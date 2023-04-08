@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::prefix('debitos')->group(function () {
     Route::get('/', [DebitoController::class, 'index'])->name('index');
+    Route::post('/', [DebitoController::class, 'index'])->name('index');
     Route::get('/create', [DebitoController::class, 'create'])->name('create');
 });
 

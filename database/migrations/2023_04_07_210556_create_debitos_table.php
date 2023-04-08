@@ -25,6 +25,8 @@ class CreateDebitosTable extends Migration
             $table->foreign('ano_id')->references('id')->on('anos');
             $table->unsignedBigInteger('tipo_debito_id');
             $table->foreign('tipo_debito_id')->references('id')->on('tipo_debitos');
+            $table->unsignedBigInteger('categoria_debito_id');
+            $table->foreign('categoria_debito_id')->references('id')->on('categoria_debitos');
             $table->timestamps();
         });
     }

@@ -39,6 +39,7 @@ Route::name('debitos.')->prefix('debitos')->middleware('auth')->group(function (
     Route::get('/', [DebitoController::class, 'index'])->name('index');
     Route::post('/', [DebitoController::class, 'index'])->name('index');
     Route::get('/create', [DebitoController::class, 'create'])->name('create');
+    Route::get('/show', [DebitoController::class, 'show'])->name('show')->middleware('acesso-debito');
 });
 
 Route::name('proventos.')->prefix('proventos')->middleware('auth')->group(function () {

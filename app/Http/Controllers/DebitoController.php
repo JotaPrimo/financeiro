@@ -7,7 +7,9 @@ use App\Models\CategoriaDebito;
 use App\Models\Debito;
 use App\Models\Mes;
 use App\Service\DebitoService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DebitoController extends Controller
 {
@@ -91,6 +93,21 @@ class DebitoController extends Controller
         $anos = Ano::orderBy('id')->get();
 
         return view('debitos.create', compact('categoriasDebitos', 'meses', 'anos'));
+    }
+
+    public function show(int $id)
+    {
+        try {
+            $debito = Debito::findOrFail($id);
+
+            return view('debitos.show', compact('debito'));
+
+        }catch (ModelNotFoundException $exception)
+        {
+            Alert::toast('Registro não encontrado', 'error');
+            return back();
+        }
+
     }
 
 }

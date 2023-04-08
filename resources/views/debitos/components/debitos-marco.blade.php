@@ -15,8 +15,9 @@
                 <thead>
                     <tr>
                         <th scope="col">Valor</th>
-                        <th scope="col">Usuário</th>
+                        <th scope="col">Descrição</th>
                         <th scope="col">Mês</th>
+                        <th scope="col">Usuário</th>
                         <th scope="col">Categoria</th>
                     </tr>
                     </thead>
@@ -27,6 +28,9 @@
                                 <p class="text-danger">
                                     {{ $debito->formatarParaDinheiro() }}
                                 </p>
+                            </td>
+                            <td>
+                                {{ $debito->nome }}
                             </td>
                             <td>
                                 {{ $debito->mes->nome }}

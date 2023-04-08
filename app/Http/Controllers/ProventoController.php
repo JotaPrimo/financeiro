@@ -15,7 +15,6 @@ class ProventoController extends Controller
     {
         try {
             $filters = $request->except('_token');
-            // dd($filters);
 
             $proventos = Provento::when($request->has('mes_id'), function($query) use ($request) {
                 $query->where('mes_id', $request->mes_id);

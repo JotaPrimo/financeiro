@@ -10,7 +10,7 @@ class Provento extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome'];
+    protected $fillable = ['nome', 'valor', 'user_id', 'mes_id', 'categoria_provento_id'];
 
     public function mes(): BelongsTo
     {

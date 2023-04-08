@@ -25,8 +25,9 @@ class ProventoFactory extends Factory
             'nome' => $this->faker->name,
             'valor' => $this->faker->randomFloat(10, 1.00, 12000.00),
             'user_id' => 1,
-            'ano_id' => array_rand($anos, 1),
-            'mes_id' => array_rand($meses, 1)
+            'ano_id' => random_int(1, 8),
+            'mes_id' => random_int(1, 12),
+            'categoria_provento_id' => random_int(1, 4),
         ];
     }
 }

@@ -1,20 +1,20 @@
-@switch($provento->categoria_debito_id)
-    @case(App\Models\CategoriaDebito::COMIDA)
-        <i class="fas fa-shopping-cart fa-2x" title="{{ $provento->categoria->nome }}"></i>
+@switch($provento->categoria_provento_id)
+    @case(App\Models\CategoriaProvento::SALARIO_MENSAL)
+        <i class="fas fa-wallet fa-2x" title="{{ $provento->categoria->nome }}"></i>
         @break
-    @case(App\Models\CategoriaDebito::UBER)
-        <i class="fas fa-taxi fa-2x" title="{{ $provento->categoria->nome }}"></i>
-        @break
-
-    @case(App\Models\CategoriaDebito::LAZER)
-        <i class="fas fa-plane fa-2x" title="{{ $provento->categoria->nome }}"></i>
+    @case(App\Models\CategoriaProvento::ALUGUEL)
+        <i class="fas fa-home fa-2x" title="{{ $provento->categoria->nome }}"></i>
         @break
 
-    @case(App\Models\CategoriaDebito::EDUCACAO)
+    @case(App\Models\CategoriaProvento::FREELA)
+        <i class="fas fa-unlock fa-2x" title="{{ $provento->categoria->nome }}"></i>
+        @break
+
+    @case(App\Models\CategoriaProvento::PIS)
         <i class="fas fa-user-graduate fa-2x" title="{{ $provento->categoria->nome }}"></i>
         @break
 
-    @case(App\Models\CategoriaDebito::CONTAS_DE_CASA)
+    @case(App\Models\CategoriaProvento::VALE_ALIMENTENCAO)
         <i class="fas fa-home fa-2x" title="{{ $provento->categoria->nome }}"></i>
         @break
     @default

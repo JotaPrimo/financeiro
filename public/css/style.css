@@ -1,0 +1,283 @@
+
+div .sidebar-content {
+    background: rgba(3,71,166,255) !important;
+}
+
+.sidebar {
+    background: rgba(3,71,166,255) !important;
+}
+
+.noClick {
+    pointer-events: none;
+ }
+
+.select2-selection__choice__remove {
+    background: #0B61A4;
+    border: none;
+    min-width: 10px;
+}
+
+.select2-selection--multiple .select2-selection__choice__remove {
+    margin-left: -6px;
+}
+
+.select2-results__option--selected {
+    background: #0B61A4 !important;
+    color: white;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printable,
+    #printable * {
+        visibility: visible;
+    }
+    #printable {
+        position: absolute;
+        left: 0;
+        top: 0.1rem;
+    }
+    #btn-print {
+        display: none;
+    }
+    #img_cabecalho-atendimento {
+        display: block !important;
+    }
+}
+
+.btn-login {
+    border-radius: 8px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    padding: 0 16px;
+    background-color: #0363E7;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+    color: white;
+    border: 2px solid transparent;
+    transition: 0.2s background-color, 0.2s border;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-login:disabled {
+    background-color: #86b7fe;
+}
+
+.d-none {
+    display: none;
+}
+
+.vl {
+    height: 500px;
+    /*Altura da linha*/
+    border-left: 2px solid;
+}
+
+.table-action a {
+    color: white;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+
+/*
+.avatar {
+  background-color: #c3c3c3;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.avatar .avatar-content {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  font-size: .957rem;
+  padding-left: 6px;
+  height: auto;
+  justify-content: center;
+  width: 32px;
+}
+
+.bg-avatar {
+  background-color: #0363E7;
+} */
+
+.w-80 {
+    width: 80%;
+}
+
+.ql-editor strong {
+    font-weight: bold;
+}
+
+.x-split-button {
+    position: relative;
+    width: 250px;
+    left: 40%;
+    word-wrap: normal;
+    white-space: normal;
+}
+
+.x-button.x-button-main {
+    width: 100px;
+    height: 26px;
+}
+
+.x-button {
+    position: relative;
+    margin: 0;
+    float: left;
+    outline: none;
+    padding: 5px;
+    cursor: pointer;
+    font: bold 12px Arial, Helvetica;
+    color: #8f5a0a;
+    background-color: #FEC95C;
+    border: none;
+    border-radius: 0;
+}
+
+.x-button.x-button-drop {
+    border-left: 0;
+    width: 15px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.x-button-drop-menu {
+    position: absolute;
+    top: 27px;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 136px;
+    list-style: none;
+    border: 0;
+    text-align: left;
+}
+
+.bg-lightblue {
+    background-color: #c5d9f9;
+}
+
+.alert-icon {
+    padding: 0.15rem;
+}
+
+.bg-drible {
+    background-color: #ea4c89;
+}
+
+.bg-google {
+    background-color: #dc4e41 !important;
+}
+
+.fs-lg {
+    font-size: 3rem;
+}
+
+.color-blue {
+    color: #0363E7;
+}
+
+.color-yellow {
+    color: #FEC95C
+}
+
+.color-lightred {
+    color: #dc4e41
+}
+
+.color-red {
+    color: crimson;
+}
+
+.color-gray {
+    color: darkgrey;
+}
+
+.cabecalho-sistema__icone {
+    border: 2px solid var(--cor-secundaria);
+    border-radius: 50%;
+    margin-right: 8px;
+
+}
+
+.badge-sidebar-success {
+	position: absolute;
+	right: 20px;
+	top: 12px
+}
+
+.sidebar-dropdown .badge-sidebar-success {
+	top: 10px
+}
+
+.badge-sidebar-success {
+    background: #4bbf73;
+	color: #fff
+}
+
+/* Card Bootstrap 5 */
+.bootstrap5-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+.bootstrap5-card_header {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.icone-entrada {
+    background-color: green;
+    width: 10px;
+    position: absolute;
+    left: 0;
+    margin-top: -7px!important;
+    margin-bottom: 1px;
+    margin-left: 19px!important;
+    padding: 0;
+    height: 40px;
+
+}
+
+.icone-saida {
+    background-color: red;
+    width: 10px;
+    position: absolute;
+    left: 0;
+    margin-top: -7px!important;
+    margin-bottom: 1px;
+    margin-left: 19px!important;
+    padding: 0;
+    height: 40px;
+
+}

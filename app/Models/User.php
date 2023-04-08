@@ -14,6 +14,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const DELETADO = 0;
+    const NAO_DELETADO = 1;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'deletado',
     ];
 
     /**
@@ -48,4 +52,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Debito::class);
     }
+
+    public function proventos(): HasMany
+    {
+        return $this->hasMany(Provento::class);
+    }
+
 }

@@ -10,6 +10,12 @@ class CategoriaDebito extends Model
 {
     use HasFactory;
 
+    const COMIDA = 1;
+    const        UBER = 2;
+    const   LAZER = 3;
+    const   EDUCACAO = 4;
+    const   CONTAS_DE_CASA = 5;
+
     protected $fillable = ['nome'];
 
     public function debitos(): HasMany

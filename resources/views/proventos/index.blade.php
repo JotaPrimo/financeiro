@@ -1,0 +1,18 @@
+@extends('layouts.main')
+@section('content')
+    <div class="row">
+        <div class="col">
+            @include('proventos.components.form-busca')
+
+            @include('proventos.components.proventos-janeiro')
+
+            @include('proventos.components.proventos-fevereiro')
+
+            @include('proventos.components.proventos-marco')
+        </div>
+    </div>
+
+@endsection
+
+@section('scripts')
+@endsection

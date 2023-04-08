@@ -1,0 +1,20 @@
+html {
+    font-size: 0.895rem;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+}
+h2 {
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid black;
+}
+th,
+td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid black;
+}

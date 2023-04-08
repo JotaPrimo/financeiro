@@ -2,20 +2,88 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ano;
+use App\Models\CategoriaProvento;
+use App\Models\Mes;
 use App\Models\Provento;
+use App\Service\ProventoService;
 use Illuminate\Http\Request;
 
 class ProventoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        try {
+            $filters = $request->except('_token');
+            // dd($filters);
+
+            $proventos = Provento::when($request->has('mes_id'), function($query) use ($request) {
+                $query->where('mes_id', $request->mes_id);
+            })->when($request->has('ano_id'), function($query) use ($request) {
+                $query->where('ano_id', $request->ano_id);
+            })->when($request->has('categoria_provento_id'), function($query) use ($request) {
+                $query->where('categoria_provento_id', $request->categoria_provento_id);
+            })->when(!$request->has('ano_id'), function($query) use ($request) {
+                $query->where('ano_id', Ano::ANO_2023);
+            })->where('user_id', auth()->user()->id)
+                ->get();
+
+            $proventosJaneiro = ProventoService::returnProventoJaneiro($proventos);
+
+            $proventosFevereiro = ProventoService::returnProventoFevereiro($proventos);
+
+            $proventosMarco = ProventoService::returnProventoMarco($proventos);
+
+            $proventosAbril = $proventos->filter(function (Provento $provento) {
+                return $provento->mes_id == Mes::ABRIL;
+            });
+
+            $proventosMaio = $proventos->filter(function (Provento $provento) {
+                return $provento->mes_id == Mes::MAIO;
+            });
+
+            $proventosJunho = $proventos->filter(function (Provento $provento) {
+                return $provento->mes_id == Mes::JUNHO;
+            });
+
+            $proventosJulho = $proventos->filter(function (Provento $provento) {
+                return $provento->mes_id == Mes::JULHO;
+            });
+
+            $proventosAgosto = $proventos->filter(function (Provento $provento) {
+                return $provento->mes_id == Mes::AGOSTO;
+            });
+
+            $proventosSetembro = $proventos->filter(function (Provento $provento) {
+                return $provento->mes_id == Mes::SETEMBRO;
+            });
+
+            $proventosOutubro = $proventos->filter(function (Provento $provento) {
+                return $provento->mes_id == Mes::OUTUBRO;
+            });
+
+            $proventosNovembro = $proventos->filter(function (Provento $provento) {
+                return $provento->mes_id == Mes::NOVEMBRO;
+            });
+
+            $proventosDezembro = $proventos->filter(function (Provento $provento) {
+                return $provento->mes_id == Mes::DEZEMBRO;
+            });
+
+
+            $categoriasProventos = CategoriaProvento::orderBy('nome')->get(['id', 'nome']);
+            $meses = Mes::orderBy('id')->get(['id', 'nome']);
+            $anos = Ano::orderBy('id')->get(['id', 'nome']);
+
+            return view('proventos.index',
+                compact('proventos', 'proventosJaneiro', 'proventosFevereiro', 'proventosMarco', 'proventosAbril',
+                    'proventosMaio', 'proventosJunho', 'proventosJulho', 'proventosAgosto', 'proventosSetembro', 'proventosOutubro',
+                    'proventosNovembro', 'proventosDezembro', 'categoriasProventos', 'meses', 'anos', 'filters'));
+        }catch (\Exception $exception) {
+            dd($exception->getMessage());
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.

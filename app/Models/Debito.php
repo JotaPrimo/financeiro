@@ -19,6 +19,11 @@ class Debito extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function mes(): BelongsTo
+    {
+        return $this->belongsTo(Mes::class);
+    }
+
     public function categoria(): BelongsTo
     {
         return $this->belongsTo(CategoriaDebito::class, 'categoria_debito_id');

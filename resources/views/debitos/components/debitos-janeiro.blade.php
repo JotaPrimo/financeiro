@@ -12,19 +12,27 @@
              data-bs-parent="#debitosJaneiro">
             <div class="accordion-body">
                 <table class="table table-striped">
-                <thead>
+                    <thead>
                     <tr>
                         <th scope="col">Valor</th>
                         <th scope="col">Usuário</th>
+                        <th scope="col">Mês</th>
                         <th scope="col">Categoria</th>
                     </tr>
                     </thead>
                     <tbody>
                     @forelse($debitosJaneiro as $debito)
                         <tr>
-                            <td>{{ $debito->formatarParaDinheiro() }}</td>
+                            <td>
+                                <p class="text-danger">{{ $debito->formatarParaDinheiro() }}</p>
+                            </td>
+                            <td>
+                                {{ $debito->mes->nome }}
+                            </td>
                             <td>{{ $debito->user->name ?? '' }}</td>
-                            <td>{{ $debito->categoria->nome ?? '' }}</td>
+                            <td>
+                               @include('debitos.components.switch-icons')
+                            </td>
                         </tr>
                     @empty
 
@@ -32,7 +40,7 @@
                     </tbody>
                     <tr>
                         <td>
-                            Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosJaneiro) }}
+                            <p class="text-danger">Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosJaneiro) }}</p>
                         </td>
                     </tr>
                 </table>

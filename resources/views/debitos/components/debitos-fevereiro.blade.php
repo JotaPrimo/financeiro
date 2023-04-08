@@ -16,15 +16,25 @@
                     <tr>
                         <th scope="col">Valor</th>
                         <th scope="col">Usuário</th>
+                        <th scope="col">Mês</th>
                         <th scope="col">Categoria</th>
                     </tr>
                     </thead>
                     <tbody>
                     @forelse($debitosFevereiro as $debito)
                         <tr>
-                            <td>{{ $debito->formatarParaDinheiro() }}</td>
+                            <td>
+                                <p class="text-danger">
+                                    {{ $debito->formatarParaDinheiro() }}
+                                </p>
+                            </td>
+                            <td>
+                                {{ $debito->mes->nome }}
+                            </td>
                             <td>{{ $debito->user->name ?? '' }}</td>
-                            <td>{{ $debito->categoria->nome }}</td>
+                            <td>
+                                @include('debitos.components.switch-icons')
+                            </td>
                         </tr>
                     @empty
 
@@ -32,7 +42,9 @@
                     </tbody>
                     <tr>
                         <td>
-                            Total : {{ \App\Service\DebitoService::returnTotalDebitos($debitosFevereiro) }}
+                            <p class="text-danger">
+                                Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosFevereiro) }}
+                            </p>
                         </td>
                     </tr>
                 </table>

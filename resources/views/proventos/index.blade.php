@@ -2,6 +2,9 @@
 @section('content')
     <div class="row">
         <div class="col">
+
+            @include('proventos.components.cards')
+
             @include('proventos.components.form-busca')
 
             @include('proventos.components.proventos-janeiro')

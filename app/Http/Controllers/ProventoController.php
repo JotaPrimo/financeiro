@@ -6,6 +6,7 @@ use App\Models\Ano;
 use App\Models\CategoriaProvento;
 use App\Models\Mes;
 use App\Models\Provento;
+use App\Service\DebitoService;
 use App\Service\ProventoService;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,8 @@ class ProventoController extends Controller
                 $query->where('ano_id', Ano::ANO_2023);
             })->where('user_id', auth()->user()->id)
                 ->get();
+
+            $totalAnual = ProventoService::returnTotalProventoPorAno($proventos);
 
             $proventosJaneiro = ProventoService::returnProventoJaneiro($proventos);
 
@@ -75,7 +78,7 @@ class ProventoController extends Controller
             $anos = Ano::orderBy('id')->get(['id', 'nome']);
 
             return view('proventos.index',
-                compact('proventos', 'proventosJaneiro', 'proventosFevereiro', 'proventosMarco', 'proventosAbril',
+                compact('totalAnual','proventos', 'proventosJaneiro', 'proventosFevereiro', 'proventosMarco', 'proventosAbril',
                     'proventosMaio', 'proventosJunho', 'proventosJulho', 'proventosAgosto', 'proventosSetembro', 'proventosOutubro',
                     'proventosNovembro', 'proventosDezembro', 'categoriasProventos', 'meses', 'anos', 'filters'));
         }catch (\Exception $exception) {

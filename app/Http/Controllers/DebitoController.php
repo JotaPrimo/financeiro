@@ -17,7 +17,6 @@ class DebitoController extends Controller
     {
         try {
             $filters = $request->except('_token');
-            // dd($filters);
 
             $debitos = Debito::when($request->has('mes_id'), function($query) use ($request) {
                 $query->where('mes_id', $request->mes_id);
@@ -29,6 +28,8 @@ class DebitoController extends Controller
                 $query->where('ano_id', Ano::ANO_2023);
             })->where('user_id', auth()->user()->id)
                 ->get();
+
+            $totalAnual = DebitoService::returnTotalDebitoPorAno($debitos);
 
             $debitosJaneiro = DebitoService::returnDebitoJaneiro($debitos);
 
@@ -80,7 +81,7 @@ class DebitoController extends Controller
             return view('debitos.index',
                 compact('debitos', 'debitosJaneiro', 'debitosFevereiro', 'debitosMarco', 'debitosAbril',
                     'debitosMaio', 'debitosJunho', 'debitosJulho', 'debitosAgosto', 'debitosSetembro', 'debitosOutubro',
-                    'debitosNovembro', 'debitosDezembro', 'categoriasDebitos', 'meses', 'anos', 'filters'));
+                    'debitosNovembro', 'debitosDezembro', 'categoriasDebitos', 'meses', 'anos', 'filters', 'totalAnual'));
         }catch (\Exception $exception) {
             dd($exception->getMessage());
         }

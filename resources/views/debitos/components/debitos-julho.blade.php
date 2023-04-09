@@ -1,15 +1,15 @@
-<div class="accordion mb-5 mt-5" id="debitosFevereiro">
+<div class="accordion mb-5 mt-5" id="debitosJulho">
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
-                Fevereiro
+                Julho
             </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show"
              aria-labelledby="headingOne"
-             data-bs-parent="#debitosFevereiro">
+             data-bs-parent="#debitosJulho">
             <div class="accordion-body">
                 <table class="table table-striped table-hover">
                 <thead>
@@ -19,11 +19,10 @@
                         <th scope="col">Mês</th>
                         <th scope="col">Usuário</th>
                         <th scope="col">Categoria</th>
-                        <th scope="col">Cadastrado Em</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse($debitosFevereiro as $debito)
+                    @forelse($debitosJulho as $debito)
                         <tr>
                             <td>
                                 <p class="text-danger">
@@ -40,9 +39,6 @@
                             <td>
                                 @include('debitos.components.switch-icons')
                             </td>
-                            <td>
-                                {{ \App\Service\DataService::formatarData($debito->created_at) }}
-                            </td>
                         </tr>
                     @empty
 
@@ -50,9 +46,7 @@
                     </tbody>
                     <tr>
                         <td>
-                            <p class="text-danger">
-                                Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosFevereiro) }}
-                            </p>
+                            Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosJulho) }}
                         </td>
                     </tr>
                 </table>

@@ -11,7 +11,7 @@
              aria-labelledby="headingOne"
              data-bs-parent="#proventosFevereiro">
             <div class="accordion-body">
-                <table class="table table-striped">
+                <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Valor</th>

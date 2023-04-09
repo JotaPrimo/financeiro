@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Intranet - Instituto Mirim</title>
+    <title>Financeiro</title>
     <link rel="shortcut icon" type="svg" href="{{ asset('imagens/favicon.ico') }}" style="color: #4a88eb">
     {{-- Styles --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             <a class="sidebar-brand" href="#">
                 <img src="{{ asset('imagens/logo imcg.png') }}" alt="" width="35px" height="30px"
                      style="margin-right: 7px">
-                <span class="align-middle me-3">Intranet</span>
+                <span class="align-middle me-3">Financeiro</span>
             </a>
             <ul class="sidebar-nav">
                 <li class="sidebar-header">

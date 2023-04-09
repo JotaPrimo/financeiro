@@ -30,7 +30,7 @@
                                         <img src="imagens/logo imcg.png" class="img-fluid rounded-circle" width="132" height="132" />
                                     </div>
                                     <div class="text-center mt-4">
-                                        <h1 class="h2">Intranet</h1>
+                                        <h1 class="h2">Financeiro</h1>
                                         <p class="lead">
                                             Faça login em sua conta para continuar
                                         </p>

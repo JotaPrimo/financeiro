@@ -20,6 +20,7 @@ class CategoriaDebitoSeeder extends Seeder
             'Lazer',
             'Educação',
             'Contas de Casa',
+            'Cartão de Crédito',
         ];
 
         foreach ($categorias as $categoria) {

@@ -7,6 +7,8 @@
 
             @include('proventos.components.form-busca')
 
+            @include('components.alert-resultados')
+
             @include('proventos.components.proventos-janeiro')
 
             @include('proventos.components.proventos-fevereiro')

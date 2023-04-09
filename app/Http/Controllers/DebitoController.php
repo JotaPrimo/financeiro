@@ -30,7 +30,7 @@ class DebitoController extends Controller
             })->where('user_id', auth()->user()->id)
                 ->get();
 
-            $totalAnual = DebitoService::returnTotalDebitoPorAno($debitos);
+            $totalAnual = DebitoService::returnTotalDebitoPorAno($debitos, $request);
 
             $debitosJaneiro = DebitoService::returnDebitoJaneiro($debitos);
 

@@ -6,11 +6,17 @@ namespace App\Service;
 use App\Models\Debito;
 use App\Models\Mes;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class DebitoService
 {
-    public static function returnTotalDebitoPorAno(Collection $debitosAnual, $ano = 2023)
+    public static function returnTotalDebitoPorAno(Collection $debitosAnual, Request $request)
     {
+        if (!$request->has('ano'))
+            $ano = DataService::retornaAnoAtualInteger();
+        else
+            $ano = $request->ano;
+
         return $debitosAnual->filter(function ($debito) use ($ano) {
             return $debito->ano == $ano;
         })->sum(function ($valor) {

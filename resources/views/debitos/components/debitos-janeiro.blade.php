@@ -7,7 +7,8 @@
                 Janeiro
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show"
+        <div id="collapseOne" class="accordion-collapse collapse
+         {{ \App\Service\DataService::retornaMesAtualInteger() == \App\Models\Mes::JANEIRO ? 'show' : '' }}"
              aria-labelledby="headingOne"
              data-bs-parent="#debitosJaneiro">
             <div class="accordion-body">
@@ -17,6 +18,7 @@
                         <th scope="col">Valor</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Mês</th>
+                        <th scope="col">Ano</th>
                         <th scope="col">Usuário</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Cadastrado Em</th>
@@ -33,6 +35,9 @@
                             </td>
                             <td>
                                 {{ $debito->mes->nome }}
+                            </td>
+                            <td>
+                                @include('components.badge-ano')
                             </td>
                             <td>
                                 {{ $debito->user->name ?? '' }}

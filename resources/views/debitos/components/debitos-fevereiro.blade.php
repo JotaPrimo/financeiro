@@ -7,16 +7,18 @@
                 Fevereiro
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show"
+        <div id="collapseOne" class="accordion-collapse collapse
+                 {{ \App\Service\DataService::retornaMesAtualInteger() == \App\Models\Mes::FEVEREIRO ? 'show' : '' }}"
              aria-labelledby="headingOne"
              data-bs-parent="#debitosFevereiro">
             <div class="accordion-body">
                 <table class="table table-striped table-hover">
-                <thead>
+                    <thead>
                     <tr>
                         <th scope="col">Valor</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Mês</th>
+                        <th scope="col">Ano</th>
                         <th scope="col">Usuário</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Cadastrado Em</th>
@@ -36,6 +38,9 @@
                             <td>
                                 {{ $debito->mes->nome }}
                             </td>
+                            <td>
+                                @include('components.badge-ano')
+                            </td>
                             <td>{{ $debito->user->name ?? '' }}</td>
                             <td>
                                 @include('debitos.components.switch-icons')
@@ -50,7 +55,7 @@
                     </tbody>
                     <tr>
                         <td>
-                                Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosFevereiro) }}
+                            Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosFevereiro) }}
 
                         </td>
                     </tr>

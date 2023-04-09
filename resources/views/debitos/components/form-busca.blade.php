@@ -22,7 +22,8 @@
                                 @isset($filters['ano'])
                                     {{ $filters['ano'] == $ano ? 'selected' : '' }}
                                     @endisset>
-                                    {{ $ano }}</option>
+                                    {{ $ano }}
+                                </option>
                             @empty
                                 <option selected disabled>Sem registros</option>
                             @endforelse

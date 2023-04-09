@@ -5,14 +5,16 @@ namespace App\Service;
 use App\Models\Mes;
 use App\Models\Provento;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class ProventoService
 {
-    public static function returnTotalProventoPorAno(Collection $proventosAnual, $ano = null)
+    public static function returnTotalProventoPorAno(Collection $proventosAnual, Request $request)
     {
-        if (is_null($ano)) {
+        if (!$request->has('ano'))
             $ano = DataService::retornaAnoAtualInteger();
-        }
+        else
+            $ano = $request->ano;
 
         return $proventosAnual->filter(function ($provento) use ($ano) {
             return $provento->ano == $ano;

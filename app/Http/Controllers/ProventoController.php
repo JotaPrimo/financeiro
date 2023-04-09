@@ -27,7 +27,7 @@ class ProventoController extends Controller
             })->where('user_id', auth()->user()->id)
                 ->get();
 
-            $totalAnual = ProventoService::returnTotalProventoPorAno($proventos);
+            $totalAnual = ProventoService::returnTotalProventoPorAno($proventos, $request);
 
             $proventosJaneiro = ProventoService::returnProventoJaneiro($proventos);
 

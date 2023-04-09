@@ -19,10 +19,11 @@
                             <option disabled selected>Escolha</option>
                             @forelse (\App\Service\DataService::ANOS as $ano)
                                 <option value="{{ $ano }}"
-                                @isset($filters['ano'])
-                                    {{ $filters['ano'] == $ano ? 'selected' : '' }}
+                                    @isset($filters['ano'])
+                                        {{ $filters['ano'] == $ano ? 'selected' : '' }}
                                     @endisset>
-                                    {{ $ano }}</option>
+                                    {{ $ano }}
+                                </option>
                             @empty
                                 <option selected disabled>Sem registros</option>
                             @endforelse

@@ -31,6 +31,9 @@
                             <td>
                                 {{ $provento->mes->nome }}
                             </td>
+                            <td>
+                                @include('components.badge-ano')
+                            </td>
                             <td>{{ $provento->user->name ?? '' }}</td>
                             <td>
                                 @include('proventos.components.switch-icons')

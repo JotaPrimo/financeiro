@@ -21,8 +21,7 @@ class CreateProventosTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('mes_id');
             $table->foreign('mes_id')->references('id')->on('meses');
-            $table->unsignedBigInteger('ano_id');
-            $table->foreign('ano_id')->references('id')->on('anos');
+            $table->integer('ano');
             $table->unsignedBigInteger('categoria_provento_id');
             $table->foreign('categoria_provento_id')->references('id')->on('categoria_proventos');
             $table->timestamps();

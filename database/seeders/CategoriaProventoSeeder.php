@@ -19,7 +19,7 @@ class CategoriaProventoSeeder extends Seeder
             'Aluguel',
             'Freela',
             'PIS',
-            'VALE_ALIMENTENCAO'
+            'Vale Alimentenção'
         ];
 
         foreach ($categorias as $categoria) {

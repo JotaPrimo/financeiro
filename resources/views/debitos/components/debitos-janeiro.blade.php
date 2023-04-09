@@ -1,4 +1,4 @@
-<div class="accordion mb-5 mt-5" id="debitosJaneiro">
+<div class="accordion mb-5" id="debitosJaneiro">
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -49,8 +49,8 @@
                     @endforelse
                     </tbody>
                     <tr>
-                        <td>
-                            <p class="text-danger">Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosJaneiro) }}</p>
+                        <td class="text-danger">
+                            Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosJaneiro) }}
                         </td>
                     </tr>
                 </table>

@@ -4,6 +4,16 @@ namespace App\Service;
 
 class DataService
 {
+    const ANOS = [
+        2023,
+        2024,
+        2025,
+        2026,
+        2027,
+        2028,
+        2029,
+    ];
+
     public static function formatarHoraHI($data)
     {
         return date('H:i', strtotime($data));
@@ -55,4 +65,15 @@ class DataService
         $date = date('Y-m-d');
         return strftime("%A, %d de %B de %Y", strtotime($date));
     }
+
+    public static function retornaAnoAtualInteger()
+    {
+        return (int) date('Y');
+    }
+
+    public static function retornaMesAtualInteger()
+    {
+        return (int) date('m');
+    }
+
 }

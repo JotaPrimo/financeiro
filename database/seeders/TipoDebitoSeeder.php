@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Ano;
 use App\Models\TipoDebito;
 use Illuminate\Database\Seeder;
 

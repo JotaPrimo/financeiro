@@ -7,27 +7,27 @@
                 <div class="row">
                     <div class="col">
                         <label for="">Nome</label>
-                        <input type="text" class="form-control" name="nome" placeholder="">
+                        <input type="text" class="form-control" name="nome" placeholder="Provento">
                     </div>
                     <div class="col">
                         <label for="">Valor</label>
-                        <input type="text" class="form-control" name="valor" placeholder="Valor">
+                        <input type="text" class="form-control money2" name="valor" placeholder="Valor">
                     </div>
                     <div class="col">
                         <label for="">Ano</label>
-                        <select id="inputState" name="ano_id" class="form-control">
+                        <select id="inputState" name="ano" class="form-control">
                             <option disabled selected>Escolha</option>
-                            @forelse ($anos as $ano)
-                                <option value="{{ $ano->id }}"
-                                @isset($filters['ano_id'])
-                                    {{ $filters['ano_id'] == $ano->id ? 'selected' : '' }}
+                            @forelse (\App\Service\DataService::ANOS as $ano)
+                                <option value="{{ $ano }}"
+                                @isset($filters['ano'])
+                                    {{ $filters['ano'] == $ano ? 'selected' : '' }}
                                     @endisset>
-                                    {{ $ano->nome }}</option>
+                                    {{ $ano }}</option>
                             @empty
                                 <option selected disabled>Sem registros</option>
                             @endforelse
                         </select>
-                        @isset($filters['categoria_debito_id'])
+                        @isset($filters['categoria_provento_id'])
                             @include('debitos.components.filtro-aplicado')
                         @endisset
                     </div>
@@ -47,25 +47,25 @@
                                <option selected disabled>Sem registros</option>
                            @endforelse
                        </select>
-                       @isset($filters['categoria_debito_id'])
+                       @isset($filters['categoria_provento_id'])
                            @include('debitos.components.filtro-aplicado')
                        @endisset
                    </div>
                    <div class="col">
-                       <label for="">Categoria Débito</label>
-                       <select id="inputState" name="categoria_debito_id" class="form-control">
+                       <label for="">Categoria Provento</label>
+                       <select id="inputState" name="categoria_provento_id" class="form-control">
                            <option disabled selected>Escolha</option>
                            @forelse ($categoriasProventos as $categoria)
                                <option value="{{ $categoria->id }}"
-                               @isset($filters['categoria_debito_id'])
-                                   {{ $filters['categoria_debito_id'] == $categoria->id ? 'selected' : '' }}
+                               @isset($filters['categoria_provento_id'])
+                                   {{ $filters['categoria_provento_id'] == $categoria->id ? 'selected' : '' }}
                                    @endisset
                                > {{ $categoria->nome }}</option>
                            @empty
                                <option selected disabled>Sem registros</option>
                            @endforelse
                        </select>
-                       @isset($filters['categoria_debito_id'])
+                       @isset($filters['categoria_provento_id'])
                            @include('debitos.components.filtro-aplicado')
                        @endisset
                    </div>

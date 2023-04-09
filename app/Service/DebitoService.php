@@ -2,17 +2,17 @@
 
 namespace App\Service;
 
-use App\Models\Ano;
+
 use App\Models\Debito;
 use App\Models\Mes;
 use Illuminate\Database\Eloquent\Collection;
 
 class DebitoService
 {
-    public static function returnTotalDebitoPorAno(Collection $debitosAnual, $ano = Ano::ANO_2023)
+    public static function returnTotalDebitoPorAno(Collection $debitosAnual, $ano = 2023)
     {
         return $debitosAnual->filter(function ($debito) use ($ano) {
-            return $debito->ano_id == $ano;
+            return $debito->ano == $ano;
         })->sum(function ($valor) {
             return $valor->valor;
         });

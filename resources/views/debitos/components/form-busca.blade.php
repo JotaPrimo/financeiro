@@ -6,23 +6,23 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <label for="">Nome</label>
-                        <input type="text" class="form-control" name="nome" placeholder="">
+                        <label for="">Débito</label>
+                        <input type="text" class="form-control" name="nome" placeholder="Descrição do débito">
                     </div>
                     <div class="col">
                         <label for="">Valor</label>
-                        <input type="text" class="form-control" name="valor" placeholder="Valor">
+                        <input type="text" class="form-control money2" name="valor" placeholder="Valor">
                     </div>
                     <div class="col">
                         <label for="">Ano</label>
-                        <select id="inputState" name="ano_id" class="form-control">
+                        <select id="inputState" name="ano" class="form-control">
                             <option disabled selected>Escolha</option>
-                            @forelse ($anos as $ano)
-                                <option value="{{ $ano->id }}"
-                                @isset($filters['ano_id'])
-                                    {{ $filters['ano_id'] == $ano->id ? 'selected' : '' }}
+                            @forelse (\App\Service\DataService::ANOS as $ano)
+                                <option value="{{ $ano }}"
+                                @isset($filters['ano'])
+                                    {{ $filters['ano'] == $ano ? 'selected' : '' }}
                                     @endisset>
-                                    {{ $ano->nome }}</option>
+                                    {{ $ano }}</option>
                             @empty
                                 <option selected disabled>Sem registros</option>
                             @endforelse

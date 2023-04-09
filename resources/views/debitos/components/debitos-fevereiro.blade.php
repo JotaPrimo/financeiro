@@ -50,9 +50,8 @@
                     </tbody>
                     <tr>
                         <td>
-                            <p class="text-danger">
                                 Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosFevereiro) }}
-                            </p>
+
                         </td>
                     </tr>
                 </table>

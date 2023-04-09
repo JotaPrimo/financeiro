@@ -41,8 +41,8 @@
                     @endforelse
                     </tbody>
                     <tr>
-                        <td>
-                            <p class="text-success">Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($proventosJaneiro) }}</p>
+                        <td class="text-success">
+                            Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($proventosJaneiro) }}
                         </td>
                     </tr>
                 </table>

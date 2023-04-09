@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ano;
 use App\Models\CategoriaProvento;
 use App\Models\Mes;
 use App\Models\Provento;
-use App\Service\DebitoService;
+use App\Service\DataService;
 use App\Service\ProventoService;
 use Illuminate\Http\Request;
 
@@ -19,12 +18,12 @@ class ProventoController extends Controller
 
             $proventos = Provento::when($request->has('mes_id'), function($query) use ($request) {
                 $query->where('mes_id', $request->mes_id);
-            })->when($request->has('ano_id'), function($query) use ($request) {
-                $query->where('ano_id', $request->ano_id);
+            })->when($request->has('ano'), function($query) use ($request) {
+                $query->where('ano', $request->ano);
             })->when($request->has('categoria_provento_id'), function($query) use ($request) {
                 $query->where('categoria_provento_id', $request->categoria_provento_id);
-            })->when(!$request->has('ano_id'), function($query) use ($request) {
-                $query->where('ano_id', Ano::ANO_2023);
+            })->when(!$request->has('ano'), function($query) use ($request) {
+                $query->where('ano', DataService::retornaAnoAtualInteger());
             })->where('user_id', auth()->user()->id)
                 ->get();
 
@@ -75,12 +74,11 @@ class ProventoController extends Controller
 
             $categoriasProventos = CategoriaProvento::orderBy('nome')->get(['id', 'nome']);
             $meses = Mes::orderBy('id')->get(['id', 'nome']);
-            $anos = Ano::orderBy('id')->get(['id', 'nome']);
 
             return view('proventos.index',
                 compact('totalAnual','proventos', 'proventosJaneiro', 'proventosFevereiro', 'proventosMarco', 'proventosAbril',
                     'proventosMaio', 'proventosJunho', 'proventosJulho', 'proventosAgosto', 'proventosSetembro', 'proventosOutubro',
-                    'proventosNovembro', 'proventosDezembro', 'categoriasProventos', 'meses', 'anos', 'filters'));
+                    'proventosNovembro', 'proventosDezembro', 'categoriasProventos', 'meses', 'filters'));
         }catch (\Exception $exception) {
             dd($exception->getMessage());
         }

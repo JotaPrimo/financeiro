@@ -13,7 +13,7 @@ class Debito extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'valor', 'user_id', 'ano_id', 'mes_id', 'categoria_debito_id'];
+    protected $fillable = ['nome', 'valor', 'user_id', 'ano', 'mes_id', 'categoria_debito_id'];
 
     public function user(): BelongsTo
     {

@@ -2,17 +2,20 @@
 
 namespace App\Service;
 
-use App\Models\Ano;
-use App\Models\Provento;
 use App\Models\Mes;
+use App\Models\Provento;
 use Illuminate\Database\Eloquent\Collection;
 
 class ProventoService
 {
-    public static function returnTotalProventoPorAno(Collection $debitosAnual, $ano = Ano::ANO_2023)
+    public static function returnTotalProventoPorAno(Collection $proventosAnual, $ano = null)
     {
-        return $debitosAnual->filter(function ($debito) use ($ano) {
-            return $debito->ano_id == $ano;
+        if (is_null($ano)) {
+            $ano = DataService::retornaAnoAtualInteger();
+        }
+
+        return $proventosAnual->filter(function ($provento) use ($ano) {
+            return $provento->ano == $ano;
         })->sum(function ($valor) {
             return $valor->valor;
         });

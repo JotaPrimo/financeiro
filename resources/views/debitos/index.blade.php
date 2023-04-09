@@ -6,6 +6,14 @@
 
             @include('debitos.components.form-busca')
 
+            <div class="alert alert-danger alert-dismissible mt-3" role="alert">
+                <div class="alert-message">
+                    <strong>
+                        Resultados de {{ \App\Service\DataService::retornaAnoAtualInteger() }}
+                    </strong>
+                </div>
+            </div>
+
             @include('debitos.components.debitos-janeiro')
 
             @include('debitos.components.debitos-fevereiro')

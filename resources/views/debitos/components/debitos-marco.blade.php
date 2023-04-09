@@ -45,7 +45,7 @@
                     @endforelse
                     </tbody>
                     <tr>
-                        <td>
+                        <td class="text-danger">
                             Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosMarco) }}
                         </td>
                     </tr>

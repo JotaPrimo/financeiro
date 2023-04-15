@@ -15,9 +15,8 @@ class AutenticacaoController extends Controller
 
     public function autenticacao(Request $request) {
 
-        if(!Auth::attempt(['email' => $request->email, 'password' => $request->password, 'deletado' => User::NAO_DELETADO])) {
-            Alert::toast('Credenciais de acesso inválidas.', 'danger');
-            return redirect()->back();
+        if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->back()->with('Credenciais de acesso inválidas.', 'error');
         }
 
         return redirect()->route('dashboard.index');

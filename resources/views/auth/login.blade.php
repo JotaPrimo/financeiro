@@ -40,7 +40,12 @@
                                         @method('post')
                                         <div class="mb-3">
                                             <label class="form-label">Usuário</label>
-                                            <input class="form-control form-control-lg" type="test" name="email" placeholder="Insira o seu nome de usuário" required/>
+                                            <input class="form-control form-control-lg" type="text" name="email" placeholder="Insira o seu nome de usuário" required/>
+                                            @if ($errors->has('email'))
+                                                <span class="invalid-feedback">
+														<strong>{{ $errors->first('email') }}</strong>
+													</span>
+                                            @endif
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Senha</label>
@@ -60,7 +65,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

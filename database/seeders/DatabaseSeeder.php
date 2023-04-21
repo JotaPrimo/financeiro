@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
             UserSeeer::class
         ]);
 
-        Provento::factory()->count(300)->create();
-        Debito::factory()->count(300)->create();
+        Provento::factory()->count(600)->create();
+        Debito::factory()->count(600)->create();
 
 
     }

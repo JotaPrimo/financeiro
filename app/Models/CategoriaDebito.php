@@ -18,6 +18,7 @@ class CategoriaDebito extends Model
 
     protected $fillable = ['nome'];
 
+
     public function debitos(): HasMany
     {
         return $this->hasMany(Debito::class);

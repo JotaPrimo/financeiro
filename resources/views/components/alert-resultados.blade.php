@@ -1,4 +1,4 @@
-<div class="alert alert-{{ request()->is('debitos*') ? 'danger' : 'success' }} alert-dismissible mt-3" role="alert">
+<div class="alert alert-{{ request()->is('debitos*') ? 'danger' : 'success' }} alert-dismissible" role="alert">
     <div class="alert-message">
         <strong>
             Resultados de

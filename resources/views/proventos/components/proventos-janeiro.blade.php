@@ -7,17 +7,22 @@
                 Janeiro
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show"
-             aria-labelledby="headingOne"
-             data-bs-parent="#proventosJaneiro">
+        <div
+            id="collapseOne"
+            class="accordion-collapse collapse
+            {{ verificarMesAtualShow(\App\Models\Mes::JANEIRO) }}"
+            aria-labelledby="headingOne"
+            data-bs-parent="#proventosJaneiro">
             <div class="accordion-body">
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
                         <th scope="col">Valor</th>
-                        <th scope="col">Usuário</th>
                         <th scope="col">Mês</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Usuário</th>
                         <th scope="col">Categoria</th>
+                        <th scope="col">Cadastrado Em</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,9 +39,14 @@
                             <td>
                                 @include('components.badge-ano')
                             </td>
-                            <td>{{ $provento->user->name ?? '' }}</td>
+                            <td>
+                                {{ $provento->user->name ?? '' }}
+                            </td>
                             <td>
                                 @include('proventos.components.switch-icons')
+                            </td>
+                            <td>
+                                {{ \App\Service\DataService::formatarData($provento->created_at) }}
                             </td>
                         </tr>
                     @empty

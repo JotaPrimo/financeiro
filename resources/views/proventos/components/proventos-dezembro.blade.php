@@ -1,54 +1,49 @@
-<div class="accordion mb-5 mt-5" id="debitosNovembro">
+<div class="accordion mb-5 mt-5" id="proventoDezembro">
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
-                Novembro
+                Dezembro
             </button>
         </h2>
-        <div id="collapseOne"
-             class="accordion-collapse collapse
-             {{ verificarMesAtualShow(\App\Models\Mes::NOVEMBRO) }}"
+        <div
+            id="collapseOne"
+            class="accordion-collapse collapse {{ verificarMesAtualShow(\App\Models\Mes::DEZEMBRO) }}"
              aria-labelledby="headingOne"
-             data-bs-parent="#debitosNovembro">
+             data-bs-parent="#proventoDezembro">
             <div class="accordion-body">
                 <table class="table table-striped table-hover">
-                <thead>
+                    <thead>
                     <tr>
                         <th scope="col">Valor</th>
-                        <th scope="col">Descrição</th>
                         <th scope="col">Mês</th>
                         <th scope="col">Usuário</th>
                         <th scope="col">Categoria</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse($debitosNovembro as $debito)
+                    @forelse($proventosDezembro as $provento)
                         <tr>
                             <td>
-                                <p class="text-danger">
-                                    {{ $debito->formatarParaDinheiro() }}
+                                <p class="text-success">
+                                    {{ $provento->formatarParaDinheiro() }}
                                 </p>
                             </td>
                             <td>
-                                {{ $debito->nome }}
+                                {{ $provento->mes->nome }}
                             </td>
+                            <td>{{ $provento->user->name ?? '' }}</td>
                             <td>
-                                {{ $debito->mes->nome }}
-                            </td>
-                            <td>{{ $debito->user->name ?? '' }}</td>
-                            <td>
-                                @include('debitos.components.switch-icons')
+                                @include('proventos.components.switch-icons')
                             </td>
                         </tr>
                     @empty
-
                     @endforelse
                     </tbody>
                     <tr>
-                        <td class="text-danger">
-                            Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($debitosNovembro) }}
+                        <td class="text-success">
+                            Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($proventosDezembro) }}
                         </td>
                     </tr>
                 </table>

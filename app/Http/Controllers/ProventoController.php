@@ -8,6 +8,7 @@ use App\Models\Provento;
 use App\Service\DataService;
 use App\Service\ProventoService;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProventoController extends Controller
 {
@@ -80,74 +81,40 @@ class ProventoController extends Controller
                     'proventosMaio', 'proventosJunho', 'proventosJulho', 'proventosAgosto', 'proventosSetembro', 'proventosOutubro',
                     'proventosNovembro', 'proventosDezembro', 'categoriasProventos', 'meses', 'filters'));
         }catch (\Exception $exception) {
-            dd($exception->getMessage());
+            Alert::toast('Ocorreu um erro');
+            return back();
         }
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Provento  $provento
-     * @return \Illuminate\Http\Response
-     */
     public function show(Provento $provento)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Provento  $provento
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Provento $provento)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Provento  $provento
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Provento $provento)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Provento  $provento
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Provento $provento)
     {
         //
     }
+
 }

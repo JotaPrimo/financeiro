@@ -2,11 +2,11 @@
 @section('content')
     <div class="row">
         <div class="col">
+            @include('components.alert-resultados')
+
             @include('debitos.components.cards')
 
             @include('debitos.components.form-busca')
-
-            @include('components.alert-resultados')
 
             @include('debitos.components.debitos-janeiro')
 

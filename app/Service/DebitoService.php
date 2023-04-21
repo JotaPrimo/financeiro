@@ -24,6 +24,15 @@ class DebitoService
         });
     }
 
+    public static function getDebitosMesAtual()
+    {
+        return Debito::where('user_id', auth()->user()->id)->get()
+            ->filter(function ($debito) {
+            return $debito->ano == DataService::retornaAnoAtualInteger() && $debito->mes_id == DataService::retornaMesAtualInteger();
+        })->groupBy(['mes_id', 'categoria_debito_id']);
+
+    }
+
     public static function returnDebitoJaneiro(Collection $debitos)
     {
         return $debitos->filter(function (Debito $debito) {
@@ -61,7 +70,6 @@ class DebitoService
             return $debito->mes_id == Mes::MARCO;
         });
     }
-
 
 
 }

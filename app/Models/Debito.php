@@ -15,6 +15,11 @@ class Debito extends Model
 
     protected $fillable = ['nome', 'valor', 'user_id', 'ano', 'mes_id', 'categoria_debito_id'];
 
+    public function getNomeAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

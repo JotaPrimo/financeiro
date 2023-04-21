@@ -19,13 +19,13 @@ class DebitoController extends Controller
 
             $filters = $request->except('_token');
 
-            $debitos = Debito::when($request->has('mes_id'), function($query) use ($request) {
+            $debitos = Debito::when($request->has('mes_id'), function ($query) use ($request) {
                 $query->where('mes_id', $request->mes_id);
-            })->when($request->has('ano'), function($query) use ($request) {
+            })->when($request->has('ano'), function ($query) use ($request) {
                 $query->where('ano', $request->ano);
-            })->when($request->has('categoria_debito_id'), function($query) use ($request) {
+            })->when($request->has('categoria_debito_id'), function ($query) use ($request) {
                 $query->where('categoria_debito_id', $request->categoria_debito_id);
-            })->when(!$request->has('ano'), function($query) use ($request) {
+            })->when(!$request->has('ano'), function ($query) use ($request) {
                 $query->where('ano', DataService::retornaAnoAtualInteger());
             })->where('user_id', auth()->user()->id)
                 ->get();
@@ -74,7 +74,6 @@ class DebitoController extends Controller
                 return $debito->mes_id == Mes::DEZEMBRO;
             });
 
-
             $categoriasDebitos = CategoriaDebito::orderBy('nome')->get(['id', 'nome']);
             $meses = Mes::orderBy('id')->get(['id', 'nome']);
 
@@ -82,7 +81,7 @@ class DebitoController extends Controller
                 compact('debitos', 'debitosJaneiro', 'debitosFevereiro', 'debitosMarco', 'debitosAbril',
                     'debitosMaio', 'debitosJunho', 'debitosJulho', 'debitosAgosto', 'debitosSetembro', 'debitosOutubro',
                     'debitosNovembro', 'debitosDezembro', 'categoriasDebitos', 'meses', 'filters', 'totalAnual'));
-        }catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             dd($exception->getMessage());
         }
     }
@@ -102,8 +101,7 @@ class DebitoController extends Controller
 
             return view('debitos.show', compact('debito'));
 
-        }catch (ModelNotFoundException $exception)
-        {
+        } catch (ModelNotFoundException $exception) {
             Alert::toast('Registro não encontrado', 'error');
             return back();
         }

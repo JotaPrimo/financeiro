@@ -7,12 +7,14 @@
                 Fevereiro
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show"
-             aria-labelledby="headingOne"
-             data-bs-parent="#proventosFevereiro">
+        <div
+            id="collapseOne"
+            class="accordion-collapse collapse {{ verificarMesAtualShow(\App\Models\Mes::FEVEREIRO) }}"
+            aria-labelledby="headingOne"
+            data-bs-parent="#proventosFevereiro">
             <div class="accordion-body">
                 <table class="table table-striped table-hover">
-                <thead>
+                    <thead>
                     <tr>
                         <th scope="col">Valor</th>
                         <th scope="col">Mês</th>

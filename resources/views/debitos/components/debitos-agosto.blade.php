@@ -7,14 +7,14 @@
                 Agosto
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse
-                         {{ \App\Service\DataService::retornaMesAtualInteger() == \App\Models\Mes::AGOSTO ? 'show' : '' }}"
-
+        <div id="collapseOne"
+             class="accordion-collapse collapse
+             {{ verificarMesAtualShow(\App\Models\Mes::AGOSTO) }}"
              aria-labelledby="headingOne"
              data-bs-parent="#debitosAgosto">
             <div class="accordion-body">
                 <table class="table table-striped table-hover">
-                <thead>
+                    <thead>
                     <tr>
                         <th scope="col">Valor</th>
                         <th scope="col">Descrição</th>

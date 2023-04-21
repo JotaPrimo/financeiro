@@ -1,4 +1,4 @@
-<div class="accordion mb-5" id="debitosJaneiro">
+<div class="accordion mt-3 mb-5" id="debitosJaneiro">
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -7,8 +7,9 @@
                 Janeiro
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse
-         {{ \App\Service\DataService::retornaMesAtualInteger() == \App\Models\Mes::JANEIRO ? 'show' : '' }}"
+        <div id="collapseOne"
+             class="accordion-collapse collapse
+             {{ verificarMesAtualShow(\App\Models\Mes::JANEIRO) }}"
              aria-labelledby="headingOne"
              data-bs-parent="#debitosJaneiro">
             <div class="accordion-body">
@@ -43,7 +44,7 @@
                                 {{ $debito->user->name ?? '' }}
                             </td>
                             <td>
-                               @include('debitos.components.switch-icons')
+                                @include('debitos.components.switch-icons')
                             </td>
                             <td>
                                 {{ \App\Service\DataService::formatarData($debito->created_at) }}

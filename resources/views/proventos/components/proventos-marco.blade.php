@@ -7,12 +7,15 @@
                 Março
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show"
-             aria-labelledby="headingOne"
-             data-bs-parent="#proventoMarco">
+        <div
+            id="collapseOne"
+            class="accordion-collapse collapse
+            {{ verificarMesAtualShow(\App\Models\Mes::MARCO) }}"
+            aria-labelledby="headingOne"
+            data-bs-parent="#proventoMarco">
             <div class="accordion-body">
                 <table class="table table-striped table-hover">
-                <thead>
+                    <thead>
                     <tr>
                         <th scope="col">Valor</th>
                         <th scope="col">Mês</th>
@@ -43,8 +46,8 @@
                     <tr>
                         <td class="text-success">
 
-                                Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($proventosMarco) }}
-                            </td>
+                            Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($proventosMarco) }}
+                        </td>
                     </tr>
                 </table>
             </div>

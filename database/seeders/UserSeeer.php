@@ -18,7 +18,7 @@ class UserSeeer extends Seeder
         User::create([
             'name' => "Jota Santos",
             'email' => "gestald118@gmail.com",
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make(12345678),
         ]);
 
         User::create([

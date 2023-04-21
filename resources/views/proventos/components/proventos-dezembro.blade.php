@@ -13,7 +13,7 @@
              aria-labelledby="headingOne"
              data-bs-parent="#proventoDezembro">
             <div class="accordion-body">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" id="tbl_proventos_dezembro">
                     <thead>
                     <tr>
                         <th scope="col">Valor</th>

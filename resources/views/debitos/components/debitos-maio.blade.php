@@ -14,7 +14,7 @@
             aria-labelledby="headingOne"
             data-bs-parent="#debitosMaio">
             <div class="accordion-body">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" id="tbl_debitos_maio">
                     <thead>
                     <tr>
                         <th scope="col">Valor</th>

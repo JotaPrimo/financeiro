@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" href="{{ asset('select2-bootstrap/dist/select2-bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/bootstrap-multiselect.css') }}">
+    <link rel="stylesheet" href="{{ asset('datatables/1.13.4/dataTables.min.css') }}" />
 
 </head>
 
@@ -165,15 +166,12 @@
 <script src="{{ url('js/function.js') }}"></script>
 <script src="{{ asset('select2-4.1.0/dist/js/select2.js') }}"></script>
 <script src="{{ asset('js/inputmask.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-price-format/2.2.0/jquery.priceformat.js"
-        integrity="sha512-IApsaBbdocnI6O5Yh3Hii/yL+YcaKQHVByeOhaCRYoDdCq4uAGw72xivSSxkintRc2ARfrtP5xHQoTzuzbQ0Fw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-price-format/2.2.0/jquery.priceformat.js"referrerpolicy="no-referrer"></script>
 <script src="{{ asset('js/jquery-mask/dist/jquery.mask.js') }}"></script>
 <script src="{{ asset('js/mascaras.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript">
 </script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+
 <script src="{{ asset('js/axios.min.js') }}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -181,6 +179,7 @@
 <script src="{{ asset('js/funcoes.js') }}" defer></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+<script src="{{ asset('datatables/1.13.4/dataTables.min.js') }}"></script>
 
 <script>
     $("select").on("select2:open", function (event) {
@@ -195,20 +194,6 @@
         }
     });
 
-
-    $(document).ready(function () {
-        $('.select2').select2({
-            language: {
-                noResults: function () {
-                    return "Nenhum resultado encontrado";
-                }
-            },
-            closeOnSelect: true,
-            width: '100%',
-            theme: 'bootstrap',
-        });
-    });
-
     $(document).ready(function () {
         // SmartWizard initialize
         $('#smartwizard-arrows-primary').smartWizard();
@@ -220,7 +205,33 @@
     $('.money').mask('#.##0,00', {
         reverse: true
     });
-    $('.time').mask('00:00');
+
+    new DataTable('#tbl_debitos_janeiro');
+    new DataTable('#tbl_debitos_fevereiro');
+    new DataTable('#tbl_debitos_marco');
+    new DataTable('#tbl_debitos_abril');
+    new DataTable('#tbl_debitos_maio');
+    new DataTable('#tbl_debitos_junho');
+    new DataTable('#tbl_debitos_julho');
+    new DataTable('#tbl_debitos_agosto');
+    new DataTable('#tbl_debitos_setembro');
+    new DataTable('#tbl_debitos_outubro');
+    new DataTable('#tbl_debitos_novembro');
+    new DataTable('#tbl_debitos_dezembro');
+
+    new DataTable('#tbl_proventos_janeiro');
+    new DataTable('#tbl_proventos_fevereiro');
+    new DataTable('#tbl_proventos_marco');
+    new DataTable('#tbl_proventos_abril');
+    new DataTable('#tbl_proventos_maio');
+    new DataTable('#tbl_proventos_junho');
+    new DataTable('#tbl_proventos_julho');
+    new DataTable('#tbl_proventos_agosto');
+    new DataTable('#tbl_proventos_setembro');
+    new DataTable('#tbl_proventos_outubro');
+    new DataTable('#tbl_proventos_novembro');
+    new DataTable('#tbl_proventos_dezembro');
+
 </script>
 
 

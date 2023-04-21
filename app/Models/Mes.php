@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Provento;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -31,4 +32,10 @@ class Mes extends Model
     {
         return $this->hasMany(Debito::class);
     }
+
+    public function proventos(): HasMany
+    {
+        return $this->hasMany(Provento::class);
+    }
+
 }

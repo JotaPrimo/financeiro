@@ -40,4 +40,9 @@ class Debito extends Model
         return "R$ " . number_format($this->valor, 2, ',', '.');
     }
 
+    public function format()
+    {
+        return number_format($this->valor, 2, ',', '.');
+    }
+
 }

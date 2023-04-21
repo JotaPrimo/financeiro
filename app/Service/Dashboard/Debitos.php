@@ -12,8 +12,8 @@ class Debitos
     {
         return Debito::all()
             ->groupBy('categoria_debito_id')
-            ->map(function ($provento) {
-                return $provento->count();
+            ->map(function ($debito) {
+                return $debito->count();
             })->map(function ($row, $key) {
                 return [
                     'categoria' => CategoriaDebito::find($key)->nome,
@@ -27,13 +27,23 @@ class Debitos
         return Debito::where('ano', DataService::retornaAnoAtualInteger())
             ->get()
             ->groupBy('categoria_debito_id')
-            ->map(function ($provento) {
-                return $provento->count();
+            ->map(function ($debito) {
+                return $debito->count();
             })->map(function ($row, $key) {
                 return [
                     'categoria' => CategoriaDebito::find($key)->nome,
                     'qtd' => $row,
                 ];
+            })->toArray();
+    }
+
+    public static function getGroupByMesWithCountDebitos()
+    {
+        return Debito::where('mes_id', DataService::retornaMesAtualInteger())
+            ->get()
+            ->groupBy('mes_id')
+            ->map(function ($debito) {
+                return $debito->count();
             })->toArray();
     }
 

@@ -8,6 +8,7 @@ use App\Service\DataService;
 
 class Proventos
 {
+
     public static function getGroupByCategoriaWithCountProventos()
     {
         return Provento::all()
@@ -34,6 +35,16 @@ class Proventos
                     'categoria' => CategoriaProvento::find($key)->nome,
                     'qtd' => $row,
                 ];
+            })->toArray();
+    }
+
+    public static function getGroupByMesWithCountProventos()
+    {
+        return Provento::where('mes_id', DataService::retornaMesAtualInteger())
+            ->get()
+            ->groupBy('mes_id')
+            ->map(function ($provento) {
+                return $provento->count();
             })->toArray();
     }
 

@@ -9,3 +9,11 @@ if (!function_exists('verificarMesAtualShow')) {
         return DataService::retornaMesAtualInteger() == $mes ? 'show' : '';
     }
 }
+
+if (!function_exists('formatDecimalBRL')) {
+    function formatDecimalBRL($valor)
+    {
+        return number_format($valor, 2, ',', '.');
+    }
+}
+

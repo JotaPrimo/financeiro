@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
+    <a href="{{ route('dashboard.linhas') }}">Graficos de Linha</a>
     <div class="row">
         <div class="container">
             <div class="alert alert-primary alert-dismissible" role="alert">
@@ -9,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div class="col h-100">
+        <div class="col">
             <div id="debito_ano_atual"></div>
         </div>
         <div class="col">
@@ -25,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="col h-100">
+        <div class="col">
             <div id="debito"></div>
         </div>
         <div class="col">

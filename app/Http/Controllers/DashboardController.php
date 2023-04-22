@@ -19,6 +19,8 @@ class DashboardController extends Controller
         $groupProventoAnoAtual = Proventos::getGroupByCategoriaWithCountProventosAnoAtual();
         $groupDebitoAnoAtual = Debitos::getGroupByCategoriaWithCountDebitosAnoAtual();
 
+        $dados = MesService::getProventosDebitosGroupMesWithCount();
+
 
         return view('dashboard.index',
             compact('groupProventos', 'groupDebito',

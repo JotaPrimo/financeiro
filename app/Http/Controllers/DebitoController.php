@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DebitoRequest;
 use App\Models\CategoriaDebito;
 use App\Models\Debito;
 use App\Models\Mes;
@@ -94,6 +95,50 @@ class DebitoController extends Controller
         return view('debitos.create', compact('categoriasDebitos', 'meses'));
     }
 
+    public function store(DebitoRequest $request)
+    {
+        try {
+
+            Debito::create($request->validated());
+
+            Alert::toast('Débito cadastrado com sucesso', 'success');
+            return redirect()->route('debito.index');
+
+        }catch (\Exception $exception) {
+            Alert::toast('Ocorreu um erro', 'error');
+            return back();
+        }
+    }
+
+    public function edit(int $id)
+    {
+        try {
+            $categoriasDebitos = CategoriaDebito::all();
+            $debito = CategoriaDebito::findOrFail($id);
+            $meses = Mes::orderBy('id')->get();
+
+            return view('debitos.create', compact('categoriasDebitos', 'meses', 'debito'));
+        }catch (ModelNotFoundException $exception){
+            Alert::toast('Registro não encontrado', 'error');
+            return back();
+        }
+    }
+
+    public function update(DebitoRequest $request, $id)
+    {
+        try {
+
+            Debito::findOrFail($id)->update($request->validated());
+
+            Alert::toast('Débito atualizado com sucesso', 'success');
+            return redirect()->route('debito.index');
+
+        }catch (ModelNotFoundException $exception) {
+            Alert::toast('Registro não encontrado', 'error');
+            return back();
+        }
+    }
+
     public function show(int $id)
     {
         try {
@@ -107,5 +152,6 @@ class DebitoController extends Controller
         }
 
     }
+
 
 }

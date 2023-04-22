@@ -6,6 +6,10 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DebitoController;
 use App\Http\Controllers\ProventoController;
+use App\Http\Controllers\Reports\Debitos\CsvController as DebitosCsvController;
+use App\Http\Controllers\Reports\Debitos\PdfController as DebitosPdfController;
+use App\Http\Controllers\Reports\Proventos\CsvController as ProventosCsvController;
+use App\Http\Controllers\Reports\Proventos\PdfController as ProventosPdfController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +36,6 @@ Route::group(['prefix' => 'dashboards', 'as' => 'dashboard.', 'middleware' => 'a
     Route::get('', [DashboardController::class, 'index'])->name('index');
 });
 
-
-
-
 Route::name('debitos.')->prefix('debitos')->middleware('auth')->group(function () {
     Route::get('/', [DebitoController::class, 'index'])->name('index');
     Route::post('/', [DebitoController::class, 'index'])->name('index');
@@ -46,6 +47,19 @@ Route::name('proventos.')->prefix('proventos')->middleware('auth')->group(functi
     Route::get('/', [ProventoController::class, 'index'])->name('index');
     Route::post('/', [ProventoController::class, 'index'])->name('index');
     Route::get('/create', [ProventoController::class, 'create'])->name('create');
+});
+
+Route::name('reports.')->prefix('reports')->middleware('auth')->group(function () {
+    Route::name('debitos.')->prefix('debitos')->group(function () {
+        Route::get('/', [DebitosCsvController::class, 'index'])->name('csv-index');
+        Route::get('/csv', [DebitosCsvController::class, 'export'])->name('csv-export');
+        Route::get('/pdf', [DebitosPdfController::class, 'export'])->name('pdf-export');
+    });
+
+    Route::name('proventos.')->prefix('proventos')->group(function () {
+        Route::get('/csv', [ProventosCsvController::class, 'export'])->name('csv-export');
+        Route::get('/pdf', [ProventosPdfController::class, 'export'])->name('pdf-export');
+    });
 });
 
 Route::get('/dashboard', function () {

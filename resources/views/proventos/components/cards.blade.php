@@ -5,7 +5,7 @@
                 <div class="d-flex align-items-start">
                     <div class="flex-grow-1">
                         <h3 class="mb-2 text-success">
-                            R$ {{ \App\Service\DebitoService::returnValorFormatadoDinheiro($totalAnual) }}</h3>
+                            R$ {{ \App\Service\ProventoService::returnValorFormatadoDinheiro($totalAnual) }}</h3>
                         <p class="mb-2">Total</p>
                         <div class="mb-0">
                             <span class="badge badge-soft-success me-2"> +5.35% </span>

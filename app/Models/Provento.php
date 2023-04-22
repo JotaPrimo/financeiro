@@ -29,7 +29,7 @@ class Provento extends Model
 
     public function formatarParaDinheiro()
     {
-        return "R$ " . number_format($this->valor, 2, ',', ' ');
+        return "R$ " . number_format($this->valor, 2, ',', '.');
     }
 
     public function format()

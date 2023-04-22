@@ -1,59 +1,55 @@
-<div class="accordion mb-5 mt-5" id="proventoSetembro">
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                Setembro
-            </button>
-        </h2>
-        <div
-            id="collapseOne"
-            class="accordion-collapse collapse
-            {{ verificarMesAtualShow(\App\Models\Mes::SETEMBRO) }}"
-            aria-labelledby="headingOne"
-            data-bs-parent="#proventoSetembro">
-            <div class="accordion-body">
-                <table class="table table-striped table-hover" id="tbl_proventos_setembro">
-                    <thead>
+<div class="accordion-item mt-3">
+    <h2 class="accordion-header" id="headingProventoSetembro">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSetembro" aria-expanded="true" aria-controls="collapseSetembro">
+            Setembro
+        </button>
+    </h2>
+    <div id="collapseSetembro" class="accordion-collapse collapse {{ verificarMesAtualShow(\App\Models\Mes::SETEMBRO) }}" aria-labelledby="headingProventoSetembro" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <table class="table table-striped table-hover" id="tbl_proventos_abril">
+                <thead>
+                <tr>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Mês</th>
+                    <th scope="col">Usuário</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Cadastrado Em</th>
+                </tr>
+                </thead>
+                <tbody>
+                @forelse($proventosSetembro as $provento)
                     <tr>
-                        <th scope="col" class="d-none"></th>
-                        <th scope="col">Valor</th>
-                        <th scope="col">Mês</th>
-                        <th scope="col">Usuário</th>
-                        <th scope="col">Categoria</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @forelse($proventosSetembro as $provento)
-                        <tr>
-                            <td class="d-none">
-                                {{ $provento->valor }}
-                            </td>
-                            <td>
-                                <p class="text-success">
-                                    {{ $provento->formatarParaDinheiro() }}
-                                </p>
-                            </td>
-                            <td>
-                                {{ $provento->mes->nome }}
-                            </td>
-                            <td>{{ $provento->user->name ?? '' }}</td>
-                            <td>
-                                @include('proventos.components.switch-icons')
-                            </td>
-                        </tr>
-                    @empty
-
-                    @endforelse
-                    </tbody>
-                    <tr>
-                        <td class="text-success">
-                            Total : {{ \App\Service\DebitoService::returnTotalDebitoFormatado($proventosSetembro) }}
+                        <td>
+                            <p class="text-success">
+                                {{ $provento->formatarParaDinheiro() }}
+                                <span class="d-none"> {{ $provento->formatarParaDinheiro() }} </span>
+                            </p>
+                        </td>
+                        <td>
+                            {{ $provento->nome }}
+                        </td>
+                        <td>
+                            {{ $provento->mes->nome }}
+                        </td>
+                        <td>{{ $provento->user->name ?? '' }}</td>
+                        <td>
+                            @include('proventos.components.switch-icons')
+                        </td>
+                        <td>
+                            {{ \App\Service\DataService::formatarData($provento->created_at) }}
                         </td>
                     </tr>
-                </table>
-            </div>
+                @empty
+
+                @endforelse
+                </tbody>
+                <tr>
+                    <td class="text-success">
+                        Total : {{ \App\Service\ProventoService::returnTotalProventoFormatado($proventosSetembro) }}
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

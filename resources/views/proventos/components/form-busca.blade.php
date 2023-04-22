@@ -1,7 +1,7 @@
 <form method="POST">
     @csrf
     @method('POST')
-    <div class="row mt-5">
+
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -80,6 +80,13 @@
             <a href="{{ route('debitos.index') }}" title="Limpar Filtros" class="btn btn-sm btn-secondary">
                 <i class="fas fa-sync"></i>
             </a>
+            <a href="#" title="Descer para o final da tela" class="btn btn-sm btn-secondary" onclick="scrollFooter()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-arrow-down">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </a>
         </div>
-    </div>
 </form>

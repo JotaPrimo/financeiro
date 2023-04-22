@@ -6,7 +6,7 @@ $(document).ready(function () {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 
-    
+
     //Apresentar ou ocultar o menu
     $('.sidebar-toggle').on('click', function () {
         $('.sidebar').toggleClass('collapsed');
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
     today = yyyy+'-'+mm+'-'+dd;
     $("input[type='date']").attr("max", today); */
-    
+
     //Verifica se a data fim é menor do que a data de início dos campos de busca por período
     $('#data_inicio').on('submit', function() {
         var data_inicio = $("#data_inicio").val();
@@ -45,7 +45,21 @@ $(document).ready(function () {
             alert("Valid date Range");
         }
     })
-    
+
 });
+
+// scrool por click
+function scrollTopo() {
+    const  el = document.getElementById('app');
+    const elementoTopo = el.offsetTop; // Posição do elemento em relação ao topo da página
+    window.scrollTo({top: elementoTopo, behavior: "smooth"}); // Faz o scroll até a posição do elemento
+}
+
+function scrollFooter() {
+    const  el = document.getElementById('main_footer');
+    const elementoTopo = el.offsetTop; // Posição do elemento em relação ao topo da página
+    window.scrollTo({top: elementoTopo, behavior: "smooth"}); // Faz o scroll até a posição do elemento
+}
+
 
 

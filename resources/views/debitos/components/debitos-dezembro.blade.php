@@ -1,4 +1,4 @@
-<div class="accordion mb-5 mt-5" id="debitosDezembro">
+<div class="accordion" id="debitosDezembro">
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -16,6 +16,7 @@
                 <table class="table table-striped table-hover" id="tbl_debitos_dezembro">
                     <thead>
                     <tr>
+                        <th scope="col" class="d-none"></th>
                         <th scope="col">Valor</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Mês</th>
@@ -26,6 +27,9 @@
                     <tbody>
                     @forelse($debitosDezembro as $debito)
                         <tr>
+                            <td class="d-none">
+                                {{ $debito->valor }}
+                            </td>
                             <td>
                                 <p class="text-danger">
                                     {{ $debito->formatarParaDinheiro() }}

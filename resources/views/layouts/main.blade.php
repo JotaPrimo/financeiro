@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="{{ asset('select2-bootstrap/dist/select2-bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/bootstrap-multiselect.css') }}">
-    <link rel="stylesheet" href="{{ asset('datatables/1.13.4/dataTables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('datatables/1.13.4/dataTables.min.css') }}"/>
 
 </head>
 
@@ -53,12 +53,12 @@
                     </a>
                 </li>
                 {{-- Atendimentos --}}
-                    <li class="sidebar-item {{ request()->is('debitos*') ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('debitos.index') }}">
-                            <i class="fas fa-hand-holding-usd fa-2x"></i>
-                            Débitos
-                        </a>
-                    </li>
+                <li class="sidebar-item {{ request()->is('debitos*') ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('debitos.index') }}">
+                        <i class="fas fa-hand-holding-usd fa-2x"></i>
+                        Débitos
+                    </a>
+                </li>
 
                 <li class="sidebar-item {{ request()->is('proventos*') ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('proventos.index') }}">
@@ -131,8 +131,21 @@
         </main>
         {{-- Fim Main --}}
 
+        <div class="px-4 mb-3">
+            &nbsp;
+            &nbsp;
+            <a href="#" title="Subir para o topo da tela" class="btn btn-sm btn-info" onclick="scrollTopo()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-arrow-up">
+                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+            </a>
+        </div>
+
         {{-- Footer --}}
-        <footer class="footer">
+        <footer class="footer" id="main_footer">
             <div class="container-fluid">
                 <div class="row text-muted">
                     <div class="col-6 text-left">
@@ -153,8 +166,11 @@
         </footer>
         {{-- Fim Footer --}}
 
+
     </div>{{-- Fim Div Main --}}
 </div> {{-- Fim Div Wrapper --}}
+
+
 </body>
 
 
@@ -166,7 +182,8 @@
 <script src="{{ url('js/function.js') }}"></script>
 <script src="{{ asset('select2-4.1.0/dist/js/select2.js') }}"></script>
 <script src="{{ asset('js/inputmask.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-price-format/2.2.0/jquery.priceformat.js"referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-price-format/2.2.0/jquery.priceformat.js"
+        referrerpolicy="no-referrer"></script>
 <script src="{{ asset('js/jquery-mask/dist/jquery.mask.js') }}"></script>
 <script src="{{ asset('js/mascaras.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript">
@@ -180,6 +197,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script src="{{ asset('datatables/1.13.4/dataTables.min.js') }}"></script>
+<script src="{{ asset('js/setDataTableMes.js') }}"></script>
 
 <script>
     $("select").on("select2:open", function (event) {
@@ -192,6 +210,15 @@
         } else {
             $('.carregando').addClass('carregando_ativo');
         }
+
+        const meuElemento = document.querySelector(".show");
+
+        const elementoTopo = meuElemento.offsetTop; // Posição do elemento em relação ao topo da página
+        window.scrollTo({top: elementoTopo, behavior: "smooth"}); // Faz o scroll até a posição do elemento
+
+        $('input[type=search]').attr('placeholder','Digite aqui para buscar');
+
+
     });
 
     $(document).ready(function () {
@@ -206,31 +233,6 @@
         reverse: true
     });
 
-    new DataTable('#tbl_debitos_janeiro');
-    new DataTable('#tbl_debitos_fevereiro');
-    new DataTable('#tbl_debitos_marco');
-    new DataTable('#tbl_debitos_abril');
-    new DataTable('#tbl_debitos_maio');
-    new DataTable('#tbl_debitos_junho');
-    new DataTable('#tbl_debitos_julho');
-    new DataTable('#tbl_debitos_agosto');
-    new DataTable('#tbl_debitos_setembro');
-    new DataTable('#tbl_debitos_outubro');
-    new DataTable('#tbl_debitos_novembro');
-    new DataTable('#tbl_debitos_dezembro');
-
-    new DataTable('#tbl_proventos_janeiro');
-    new DataTable('#tbl_proventos_fevereiro');
-    new DataTable('#tbl_proventos_marco');
-    new DataTable('#tbl_proventos_abril');
-    new DataTable('#tbl_proventos_maio');
-    new DataTable('#tbl_proventos_junho');
-    new DataTable('#tbl_proventos_julho');
-    new DataTable('#tbl_proventos_agosto');
-    new DataTable('#tbl_proventos_setembro');
-    new DataTable('#tbl_proventos_outubro');
-    new DataTable('#tbl_proventos_novembro');
-    new DataTable('#tbl_proventos_dezembro');
 
 </script>
 

@@ -15,6 +15,7 @@
                 <table class="table table-striped table-hover" id="tbl_debitos_abril">
                     <thead>
                     <tr>
+                        <th scope="col" class="d-none"></th>
                         <th scope="col">Valor</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Mês</th>
@@ -26,6 +27,9 @@
                     <tbody>
                     @forelse($debitosAbril as $debito)
                         <tr>
+                            <td class="d-none">
+                                {{ $debito->valor }}
+                            </td>
                             <td>
                                 <p class="text-danger">
                                     {{ $debito->formatarParaDinheiro() }}

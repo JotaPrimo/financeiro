@@ -16,6 +16,7 @@
                 <table class="table table-striped table-hover" id="tbl_proventos_agosto">
                     <thead>
                     <tr>
+                        <th scope="col" class="d-none"></th>
                         <th scope="col">Valor</th>
                         <th scope="col">Mês</th>
                         <th scope="col">Usuário</th>
@@ -25,6 +26,9 @@
                     <tbody>
                     @forelse($proventosAgosto as $provento)
                         <tr>
+                            <td class="d-none">
+                                {{ $provento->valor }}
+                            </td>
                             <td>
                                 <p class="text-success">
                                     {{ $provento->formatarParaDinheiro() }}

@@ -67,7 +67,7 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ request()->is('/reports/debitos*') ? 'active' : '' }}">
                     <a data-bs-target="#multi" data-bs-toggle="collapse" class="sidebar-link" aria-expanded="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -77,16 +77,18 @@
                         </svg>
                         <span class="align-middle">Relatórios</span>
                     </a>
-                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar"
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse {{ request()->is('reports*') ? 'show' : '' }}" data-bs-parent="#sidebar"
                         style="">
                         <li class="sidebar-item">
                             <a data-bs-target="#multi-2" data-bs-toggle="collapse" class="sidebar-link collapsed"
                                aria-expanded="false">
                                 Excel
                             </a>
-                            <ul id="multi-2" class="sidebar-dropdown list-unstyled collapse" style="">
-                                <li class="sidebar-item">
+                            <ul id="multi-2" class="sidebar-dropdown list-unstyled collapse {{ request()->is('reports*') ? 'show' : '' }}" style="">
+                                <li class="sidebar-item {{ request()->is('reports/debitos*') ? 'active' : '' }}">
                                     <a class="sidebar-link" href="{{ route('reports.debitos.csv-index') }}">Débitos</a>
+                                </li>
+                                <li class="sidebar-item {{ request()->is('reports/proventos*') ? 'active' : '' }}">
                                     <a class="sidebar-link" data-bs-target="#">Proventos</a>
                                 </li>
                             </ul>

@@ -50,14 +50,15 @@ Route::name('proventos.')->prefix('proventos')->middleware('auth')->group(functi
 });
 
 Route::name('reports.')->prefix('reports')->middleware('auth')->group(function () {
-    Route::name('debitos')->group(function () {
-        Route::get('/', [DebitosCsvController::class, 'export'])->name('debitos-export');
-        Route::get('/', [DebitosPdfController::class, 'export'])->name('debitos-export');
+    Route::name('debitos.')->prefix('debitos')->group(function () {
+        Route::get('/', [DebitosCsvController::class, 'index'])->name('csv-index');
+        Route::get('/csv', [DebitosCsvController::class, 'export'])->name('csv-export');
+        Route::get('/pdf', [DebitosPdfController::class, 'export'])->name('pdf-export');
     });
 
-    Route::name('proventos')->group(function () {
-        Route::get('/', [ProventosCsvController::class, 'export'])->name('proventos-export');
-        Route::get('/', [ProventosPdfController::class, 'export'])->name('proventos-export');
+    Route::name('proventos.')->prefix('proventos')->group(function () {
+        Route::get('/csv', [ProventosCsvController::class, 'export'])->name('csv-export');
+        Route::get('/pdf', [ProventosPdfController::class, 'export'])->name('pdf-export');
     });
 });
 

@@ -37,6 +37,11 @@ class ProventoService
         })->sum();
     }
 
+    public static function returnValorFormatadoDinheiro(float $valor)
+    {
+        return number_format($valor, 2, ',', '.');
+    }
+
     public static function returnTotalProventoFormatado(Collection $proventos)
     {
         return "R$ " . number_format(self::returnTotalProventos($proventos), 2, ',', '.');

@@ -23,3 +23,17 @@ new DataTable('#tbl_proventos_setembro');
 new DataTable('#tbl_proventos_outubro');
 new DataTable('#tbl_proventos_novembro');
 new DataTable('#tbl_proventos_dezembro');
+
+
+document.getElementById('tbl_debitos_janeiro').style.width = '100%';
+document.getElementById('tbl_debitos_fevereiro').style.width = '100%';
+document.getElementById('tbl_debitos_marco').style.width = '100%';
+document.getElementById('tbl_debitos_abril').style.width = '100%';
+document.getElementById('tbl_debitos_maio').style.width = '100%';
+document.getElementById('tbl_debitos_junho').style.width = '100%';
+document.getElementById('tbl_debitos_julho').style.width = '100%';
+document.getElementById('tbl_debitos_agosto').style.width = '100%';
+document.getElementById('tbl_debitos_setembro').style.width = '100%';
+document.getElementById('tbl_debitos_outubro').style.width = '100%';
+document.getElementById('tbl_debitos_novembro').style.width = '100%';
+document.getElementById('tbl_debitos_dezembro').style.width = '100%';

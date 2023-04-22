@@ -67,17 +67,44 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ request()->is('reports*') ? 'active' : '' }}">
-                    <a data-bs-target="#reports" data-bs-toggle="collapse" class="sidebar-link">
-                        <i class="fas fa-archive fa-2x"></i>
-                        <span class="align-middle">Reports</span>
+                <li class="sidebar-item">
+                    <a data-bs-target="#multi" data-bs-toggle="collapse" class="sidebar-link" aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-check-square align-middle">
+                            <polyline points="9 11 12 14 22 4"></polyline>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                        <span class="align-middle">Relatórios</span>
                     </a>
-                    <ul id="reports" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item active"><a class="sidebar-link" href="#">PDF</a></li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="#">Excel</a></li>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar"
+                        style="">
+                        <li class="sidebar-item">
+                            <a data-bs-target="#multi-2" data-bs-toggle="collapse" class="sidebar-link collapsed"
+                               aria-expanded="false">
+                                Excel
+                            </a>
+                            <ul id="multi-2" class="sidebar-dropdown list-unstyled collapse" style="">
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="{{ route('reports.debitos.csv-index') }}">Débitos</a>
+                                    <a class="sidebar-link" data-bs-target="#">Proventos</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item">
+                            <a data-bs-target="#multi-3" data-bs-toggle="collapse" class="sidebar-link collapsed"
+                               aria-expanded="false">
+                                PDF
+                            </a>
+                            <ul id="multi-3" class="sidebar-dropdown list-unstyled collapse" style="">
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" data-bs-target="#">Débitos</a>
+                                    <a class="sidebar-link" data-bs-target="#">Proventos</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </nav>
@@ -142,17 +169,17 @@
         </main>
         {{-- Fim Main --}}
 
-        <div class="px-4 mb-3">
-            &nbsp;
-            &nbsp;
-            <a href="#" title="Subir para o topo da tela" class="btn btn-sm btn-info" onclick="scrollTopo()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-arrow-up">
-                    <line x1="12" y1="19" x2="12" y2="5"></line>
-                    <polyline points="5 12 12 5 19 12"></polyline>
-                </svg>
-            </a>
+        <div class="px-4 mb-3"> &nbsp;
+            &nbsp;@if(request()->is('debitos*') || request()->is('proventos*'))
+                <a href="#" title="Subir para o topo da tela" class="btn btn-sm btn-info" onclick="scrollTopo()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-arrow-up">
+                        <line x1="12" y1="19" x2="12" y2="5"></line>
+                        <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                </a>
+            @endif
         </div>
 
         {{-- Footer --}}

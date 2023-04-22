@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $dados = DebitoService::getDebitosMesAtual();
+        $dados = MesService::getProventosDebitosGroupMesWithCount();
 
         $groupProventos = Proventos::getGroupByCategoriaWithCountProventos();
         $groupDebito = Debitos::getGroupByCategoriaWithCountDebitos();
@@ -22,18 +22,8 @@ class DashboardController extends Controller
 
         return view('dashboard.index',
             compact('groupProventos', 'groupDebito',
-                'groupDebitoAnoAtual', 'groupProventoAnoAtual'));
+                'groupDebitoAnoAtual', 'groupProventoAnoAtual', 'dados'));
     }
 
-    public function linhas()
-    {
-
-        $dados = MesService::getProventosDebitosGroupMesWithCount();
-
-        // dd($dados);
-
-        return view('dashboard.linhas',
-            compact('dados'));
-    }
 
 }

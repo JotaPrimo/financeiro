@@ -33,12 +33,23 @@
             <div id="provento"></div>
         </div>
     </div>
+
+    <div class="row mt-3">
+        <div class="container">
+            <div class="col card">
+                <div id="chart_bar" class="p-5"></div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
     <script type="text/javascript">
         google.charts.load('current', {'packages': ['corechart']});
         google.charts.setOnLoadCallback(drawChart);
+
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChartBar);
 
         function drawChart() {
 
@@ -99,6 +110,28 @@
             chartDebitoAnoAtual.draw(dataDebitoAnoAtual, optionsDebitoAnoatual);
             chartProventoAnoAtual.draw(dataProventoAnoAtual, optionsProventoAnoatual);
             // chart 1
+        }
+
+        function drawChartBar() {
+            var data = google.visualization.arrayToDataTable([
+                ['Movimentação Financeira', 'Proventos', 'Débitos'],
+                    @foreach($dados as $data)
+                ['{{ $data['mes'] }}', {{ $data['proventos'] }}, {{ $data['debitos'] }}],
+                @endforeach
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Jéssica Helena',
+                    subtitle: 'Minha Rainha',
+                },
+                'height': 500,
+                'padding': 30
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('chart_bar'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
         }
     </script>
 @endsection

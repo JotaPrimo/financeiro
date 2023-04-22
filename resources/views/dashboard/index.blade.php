@@ -1,7 +1,6 @@
 @extends('layouts.main')
-@section('content')
 
-    <a href="{{ route('dashboard.linhas') }}">Graficos de Linha</a>
+@section('content')
     <div class="row">
         <div class="container">
             <div class="alert alert-primary alert-dismissible" role="alert">
@@ -33,6 +32,14 @@
             <div id="provento"></div>
         </div>
     </div>
+
+    <div class="row mt-3">
+        <div class="container">
+            <div class="col card">
+                <div id="chart_bar" class="p-5"></div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -40,8 +47,10 @@
         google.charts.load('current', {'packages': ['corechart']});
         google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChartBar);
 
+        function drawChart() {
             var dataDebitoAnoAtual = google.visualization.arrayToDataTable([
                 ['Débitos', 'Débitos por categoria'],
                     @foreach($groupDebitoAnoAtual as $debito)
@@ -99,6 +108,28 @@
             chartDebitoAnoAtual.draw(dataDebitoAnoAtual, optionsDebitoAnoatual);
             chartProventoAnoAtual.draw(dataProventoAnoAtual, optionsProventoAnoatual);
             // chart 1
+        }
+
+        function drawChartBar() {
+            var data = google.visualization.arrayToDataTable([
+                ['Movimentação Financeira', 'Proventos', 'Débitos'],
+                    @foreach($dados as $data)
+                ['{{ $data['mes'] }}', {{ $data['proventos'] }}, {{ $data['debitos'] }}],
+                @endforeach
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Jéssica Helena',
+                    subtitle: 'Minha Rainha',
+                },
+                'height': 500,
+                'padding': 30
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('chart_bar'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
         }
     </script>
 @endsection

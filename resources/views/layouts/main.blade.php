@@ -67,6 +67,17 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ request()->is('reports*') ? 'active' : '' }}">
+                    <a data-bs-target="#reports" data-bs-toggle="collapse" class="sidebar-link">
+                        <i class="fas fa-archive fa-2x"></i>
+                        <span class="align-middle">Reports</span>
+                    </a>
+                    <ul id="reports" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item active"><a class="sidebar-link" href="#">PDF</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="#">Excel</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
     </nav>
@@ -216,7 +227,7 @@
         const elementoTopo = meuElemento.offsetTop; // Posição do elemento em relação ao topo da página
         window.scrollTo({top: elementoTopo, behavior: "smooth"}); // Faz o scroll até a posição do elemento
 
-        $('input[type=search]').attr('placeholder','Digite aqui para buscar');
+        $('input[type=search]').attr('placeholder', 'Digite aqui para buscar');
 
 
     });

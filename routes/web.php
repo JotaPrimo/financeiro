@@ -6,6 +6,10 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DebitoController;
 use App\Http\Controllers\ProventoController;
+use App\Http\Controllers\Reports\Debitos\CsvController as DebitosCsvController;
+use App\Http\Controllers\Reports\Debitos\PdfController as DebitosPdfController;
+use App\Http\Controllers\Reports\Proventos\CsvController as ProventosCsvController;
+use App\Http\Controllers\Reports\Proventos\PdfController as ProventosPdfController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +36,6 @@ Route::group(['prefix' => 'dashboards', 'as' => 'dashboard.', 'middleware' => 'a
     Route::get('', [DashboardController::class, 'index'])->name('index');
 });
 
-
-
-
 Route::name('debitos.')->prefix('debitos')->middleware('auth')->group(function () {
     Route::get('/', [DebitoController::class, 'index'])->name('index');
     Route::post('/', [DebitoController::class, 'index'])->name('index');
@@ -46,6 +47,18 @@ Route::name('proventos.')->prefix('proventos')->middleware('auth')->group(functi
     Route::get('/', [ProventoController::class, 'index'])->name('index');
     Route::post('/', [ProventoController::class, 'index'])->name('index');
     Route::get('/create', [ProventoController::class, 'create'])->name('create');
+});
+
+Route::name('reports.')->prefix('reports')->middleware('auth')->group(function () {
+    Route::name('debitos')->group(function () {
+        Route::get('/', [DebitosCsvController::class, 'export'])->name('debitos-export');
+        Route::get('/', [DebitosPdfController::class, 'export'])->name('debitos-export');
+    });
+
+    Route::name('proventos')->group(function () {
+        Route::get('/', [ProventosCsvController::class, 'export'])->name('proventos-export');
+        Route::get('/', [ProventosPdfController::class, 'export'])->name('proventos-export');
+    });
 });
 
 Route::get('/dashboard', function () {

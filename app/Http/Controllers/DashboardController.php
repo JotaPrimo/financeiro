@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $dados = DebitoService::getDebitosMesAtual();
+        $dados = MesService::getProventosDebitosGroupMesWithCount();
 
         $groupProventos = Proventos::getGroupByCategoriaWithCountProventos();
         $groupDebito = Debitos::getGroupByCategoriaWithCountDebitos();

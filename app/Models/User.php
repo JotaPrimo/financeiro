@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use  HasFactory, Notifiable;
 
     const DELETADO = 0;
     const NAO_DELETADO = 1;

@@ -30,7 +30,6 @@ Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'dashboards', 'as' => 'dashboard.', 'middleware' => 'auth'], function () {
     Route::get('', [DashboardController::class, 'index'])->name('index');
-    Route::get('/linhas', [DashboardController::class, 'linhas'])->name('linhas');
 });
 
 

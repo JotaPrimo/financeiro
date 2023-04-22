@@ -1,7 +1,5 @@
 @extends('layouts.main')
 @section('content')
-
-    <a href="{{ route('dashboard.linhas') }}">Graficos de Linha</a>
     <div class="row">
         <div class="container">
             <div class="alert alert-primary alert-dismissible" role="alert">
@@ -34,12 +32,10 @@
         </div>
     </div>
 
-    <div class="row mt-3">
-        <div class="container">
-            <div class="col card">
-                <div id="chart_bar" class="p-5"></div>
-            </div>
-        </div>
+    <div class="card mt-3 p-5" id="chart_bar">
+    </div>
+
+    <div class="mt-3 card" id="curve_chart">
     </div>
 @endsection
 
@@ -50,6 +46,9 @@
 
         google.charts.load('current', {'packages':['bar']});
         google.charts.setOnLoadCallback(drawChartBar);
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChartLine);
 
         function drawChart() {
 
@@ -132,6 +131,26 @@
             var chart = new google.charts.Bar(document.getElementById('chart_bar'));
 
             chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+        function drawChartLine() {
+            var data = google.visualization.arrayToDataTable([
+                ['Mês', 'Proventos', 'Despesas'],
+                @foreach($dados as $data)
+                ['{{ $data['mes'] }}', {{ $data['proventos'] }}, {{ $data['debitos'] }}],
+                @endforeach
+            ]);
+
+            var options = {
+                title: 'Evolução de Gastos vs Receitas ano corrente',
+                legend: { position: 'bottom', margin: '2rem' },
+                'height': 500,
+                width: 'auto'
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
         }
     </script>
 @endsection

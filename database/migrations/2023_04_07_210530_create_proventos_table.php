@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Provento;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,6 +25,7 @@ class CreateProventosTable extends Migration
             $table->integer('ano');
             $table->unsignedBigInteger('categoria_provento_id');
             $table->foreign('categoria_provento_id')->references('id')->on('categoria_proventos');
+            $table->integer('deletado')->default(Provento::NAO_DELETADO);
             $table->timestamps();
         });
     }

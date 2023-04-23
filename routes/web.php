@@ -40,13 +40,21 @@ Route::name('debitos.')->prefix('debitos')->middleware('auth')->group(function (
     Route::get('/', [DebitoController::class, 'index'])->name('index');
     Route::post('/', [DebitoController::class, 'index'])->name('index');
     Route::get('/create', [DebitoController::class, 'create'])->name('create');
+    Route::post('/store', [DebitoController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [DebitoController::class, 'edit'])->name('edit');
     Route::get('/show', [DebitoController::class, 'show'])->name('show')->middleware('acesso-debito');
+    Route::delete('/delete/{id}', [DebitoController::class, 'delete'])->name('destroy')->middleware('acesso-debito');
 });
 
 Route::name('proventos.')->prefix('proventos')->middleware('auth')->group(function () {
     Route::get('/', [ProventoController::class, 'index'])->name('index');
-    Route::post('/', [ProventoController::class, 'index'])->name('index');
     Route::get('/create', [ProventoController::class, 'create'])->name('create');
+    Route::post('/store', [ProventoController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [ProventoController::class, 'edit'])->name('edit');
+    Route::post('/update', [ProventoController::class, 'update'])->name('update');
+    Route::get('/show/{id}', [ProventoController::class, 'show'])->name('show');
+    Route::delete('/delete/{id}', [ProventoController::class, 'delete'])->name('delete');
+
 });
 
 Route::name('reports.')->prefix('reports')->middleware('auth')->group(function () {

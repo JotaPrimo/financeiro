@@ -6,14 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProventoRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +19,22 @@ class ProventoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => [
+                'required', 'min:5', 'max:190'
+            ],
+            'valor' => [
+                'required', 'min:0.1', 'max:2000000000'
+            ],
+            'ano' => 'required',
+            'mes_id' => ['required', 'exists:mes,id'],
+            'categoria_provento_id' => ['required', 'exists:categoria_proventos,id'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            '*.required' => 'Preencha este campo'
         ];
     }
 }

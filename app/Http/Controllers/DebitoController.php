@@ -29,6 +29,7 @@ class DebitoController extends Controller
             })->when(!$request->has('ano'), function ($query) use ($request) {
                 $query->where('ano', DataService::retornaAnoAtualInteger());
             })->where('user_id', auth()->user()->id)
+                ->where('deletado', Debito::NAO_DELETADO)
                 ->get();
 
             $totalAnual = DebitoService::returnTotalDebitoPorAno($debitos, $request);
@@ -89,7 +90,7 @@ class DebitoController extends Controller
 
     public function create()
     {
-        $categoriasDebitos = CategoriaDebito::all();
+        $categoriasDebitos = CategoriaDebito::where('deletado', CategoriaDebito::NAO_DELETADO)->get();
         $meses = Mes::orderBy('id')->get();
 
         return view('debitos.create', compact('categoriasDebitos', 'meses'));
@@ -99,12 +100,15 @@ class DebitoController extends Controller
     {
         try {
 
-            Debito::create($request->validated());
+            Debito::create($request->validated() +
+                [
+                    'user_id' => auth()->user()->id
+                ]);
 
             Alert::toast('Débito cadastrado com sucesso', 'success');
-            return redirect()->route('debito.index');
+            return redirect()->route('debitos.index');
 
-        }catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             Alert::toast('Ocorreu um erro', 'error');
             return back();
         }
@@ -118,7 +122,7 @@ class DebitoController extends Controller
             $meses = Mes::orderBy('id')->get();
 
             return view('debitos.create', compact('categoriasDebitos', 'meses', 'debito'));
-        }catch (ModelNotFoundException $exception){
+        } catch (ModelNotFoundException $exception) {
             Alert::toast('Registro não encontrado', 'error');
             return back();
         }
@@ -128,12 +132,17 @@ class DebitoController extends Controller
     {
         try {
 
-            Debito::findOrFail($id)->update($request->validated());
+            Debito::findOrFail($id)->update(
+                $request->validated() +
+                [
+                    'user_id' => auth()->user()->id
+                ]
+            );
 
             Alert::toast('Débito atualizado com sucesso', 'success');
             return redirect()->route('debito.index');
 
-        }catch (ModelNotFoundException $exception) {
+        } catch (ModelNotFoundException $exception) {
             Alert::toast('Registro não encontrado', 'error');
             return back();
         }
@@ -151,6 +160,22 @@ class DebitoController extends Controller
             return back();
         }
 
+    }
+
+    public function destroy(int $id)
+    {
+        try {
+            Debito::findOrFail($id)->update([
+                'deletado' => Debito::DELETADO
+            ]);
+
+            Alert::toast('Registro deletado com sucesso', 'success');
+            return view('debitos.index');
+
+        } catch (ModelNotFoundException $exception) {
+            Alert::toast('Registro não encontrado', 'error');
+            return back();
+        }
     }
 
 

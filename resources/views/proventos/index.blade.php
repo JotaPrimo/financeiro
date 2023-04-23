@@ -6,6 +6,10 @@
 
             @include('proventos.components.cards')
 
+            <a href="{{ route('proventos.create') }}" title="Adicionar novo provento" class="btn btn-sm btn-success mb-2">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+
             <form action="" method="get">
                 @csrf
                 @include('proventos.components.form-busca')

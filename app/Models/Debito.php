@@ -10,6 +10,9 @@ class Debito extends Model
 {
     use HasFactory;
 
+    const DELETADO = 1;
+    const NAO_DELETADO = 1;
+
     protected $fillable = ['nome', 'valor', 'user_id', 'ano', 'mes_id', 'categoria_debito_id'];
 
     public function getNomeAttribute($value)
@@ -41,5 +44,7 @@ class Debito extends Model
     {
         return number_format($this->valor, 2, ',', '.');
     }
+
+
 
 }

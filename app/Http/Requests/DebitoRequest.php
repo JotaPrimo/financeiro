@@ -13,7 +13,7 @@ class DebitoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,23 @@ class DebitoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => [
+                'required', 'min:5', 'max:190'
+            ],
+            'valor' => [
+                'required', 'min:0.1', 'max:2000000000'
+            ],
+            'ano' => 'required',
+            'mes_id' => ['required', 'exists:mes,id'],
+            'categoria_debito_id' => ['required', 'exists:categoria_debitos,id'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            '*.requried' => 'Preencha este campo'
+        ];
+    }
+
 }

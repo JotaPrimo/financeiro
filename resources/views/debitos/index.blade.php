@@ -6,6 +6,10 @@
 
             @include('debitos.components.cards')
 
+            <a href="{{ route('debitos.create') }}" title="Adicionar novo débito" class="btn btn-sm btn-success mb-2">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+
             <form action="" method="get">
                 @csrf
                 @include('debitos.components.form-busca')

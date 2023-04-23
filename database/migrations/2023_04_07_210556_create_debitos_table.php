@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Debito;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -26,6 +27,7 @@ class CreateDebitosTable extends Migration
             $table->foreign('tipo_debito_id')->references('id')->on('tipo_debitos');
             $table->unsignedBigInteger('categoria_debito_id');
             $table->foreign('categoria_debito_id')->references('id')->on('categoria_debitos');
+            $table->integer('deletado')->default(Debito::NAO_DELETADO);
             $table->timestamps();
         });
     }

@@ -10,6 +10,9 @@ class Provento extends Model
 {
     use HasFactory;
 
+    const DELETADO = 1;
+    const NAO_DELETADO = 1;
+
     protected $fillable = ['nome', 'valor', 'ano', 'user_id', 'mes_id', 'categoria_provento_id'];
 
     public function mes(): BelongsTo
@@ -36,5 +39,6 @@ class Provento extends Model
     {
         return number_format($this->valor, 2, ',', '.');
     }
+
 
 }

@@ -10,6 +10,9 @@ class CategoriaProvento extends Model
 {
     use HasFactory;
 
+    const DELETADO = 1;
+    const NAO_DELETADO = 1;
+
     const SALARIO_MENSAL = 1;
     const ALUGUEL = 2;
     const FREELA = 3;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CategoriaProvento;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +17,7 @@ class CreateCategoriaProventosTable extends Migration
         Schema::create('categoria_proventos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->integer('deletado')->default(CategoriaProvento::NAO_DELETADO);
             $table->timestamps();
         });
     }

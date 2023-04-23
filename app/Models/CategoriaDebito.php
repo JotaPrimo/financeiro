@@ -10,6 +10,9 @@ class CategoriaDebito extends Model
 {
     use HasFactory;
 
+    const DELETADO = 1;
+    const NAO_DELETADO = 1;
+
     const COMIDA = 1;
     const        UBER = 2;
     const   LAZER = 3;
